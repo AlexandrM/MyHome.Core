@@ -1,0 +1,29 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "MyHome.Core.Shared": "1.0.0-*",
+    "NETStandard.Library": "1.6.1",
+    "Autofac": "4.3.0",
+    "Autofac.Extensions.DependencyInjection": "4.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microsoft.Extensions.Configuration.Binder": "1.1.0",
+    "System.Net.Http": "4.3.0",
+    "Microsoft.AspNetCore.WebUtilities": "1.1.0",
+    "System.Text.Encoding.CodePages": "4.3.0"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  },
+  "scripts": {
+    "postcompile": [
+      "xcopy /F /Y \"%project:Directory%\\bin\\Debug\\netstandard1.6\\MyHome.Core.Plugin.ValueKeeper.*\" \"%project:Directory%\\..\\MyHome.Core\\bin\\Debug\\netcoreapp1.0\\Plugins\\*.*\"",
+      "xcopy /F /Y \"%project:Directory%\\bin\\Release\\netstandard1.6\\MyHome.Core.Plugin.ValueKeeper.*\" \"%project:Directory%\\..\\MyHome.Core\\Plugins\\*.*\""
+    ]    
+  },
+  "buildOptions": {
+  }
+}

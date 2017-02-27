@@ -1,0 +1,39 @@
+<div class="navbar navbar-default navbar-inverse navbar-fixed-top " ng-controller="StateController">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a [routerLink]=" ['./'] " class="navbar-brand" [ripple]>Мой дом</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a [routerLink]=" ['./indicatorDetails']" [ripple]>Индикаторы</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<div ng-show="pendingRequests > 0" class="sk-cube-grid">
+    <div class="sk-cube sk-cube1"></div>
+    <div class="sk-cube sk-cube2"></div>
+    <div class="sk-cube sk-cube3"></div>
+    <div class="sk-cube sk-cube4"></div>
+    <div class="sk-cube sk-cube5"></div>
+    <div class="sk-cube sk-cube6"></div>
+    <div class="sk-cube sk-cube7"></div>
+    <div class="sk-cube sk-cube8"></div>
+    <div class="sk-cube sk-cube9"></div>
+</div>
+
+<main class="container-fluid body-content">
+    <router-outlet></router-outlet>
+</main>
+
+<footer>
+</footer>

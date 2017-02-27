@@ -1,0 +1,47 @@
+<br>
+
+<div class="row">
+    <div class="col-md-4">
+        <button type="button" class="btn btn-raised btn-success" [hidden]="!vm.editMode" (click)="addRow()" [ripple]>Добавить строку</button>
+        <button type="button" class="btn btn-raised btn-success" [class.btn-raised]="vm.showElementPanels" [hidden]="!vm.editMode" (click)="vm.showElementPanels = !vm.showElementPanels" [ripple]>Элементы</button>
+        
+        <div class="btn-group" dropdown [hidden]="vm.editMode">
+            <button type="button" class="btn btn-raised btn-success dropdown-toggle" dropdownToggle>
+                Представление: {{presets.current?.name}}
+                <span class="caret"></span>
+            </button>
+            <ul dropdownMenu class="dropdown-menu">
+                <li *ngFor="let preset of presets.list">
+                    <a href="#" (click)="setPreset(preset)">{{preset.name}}</a>
+                </li>
+                <li class="divider" [hidden]="presets.current.id == null"></li>
+                <li><a href="#" (click)="deletePreset(presets.current)" [hidden]="presets.current.id == null">Удалить</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-md-4 pull-right">
+        <button type="button" class="btn btn-raised btn-primary" [ripple] [hidden]="vm.editMode" (click)="editMode()">Изменить</button>
+        <button type="button" class="btn btn-raised btn-primary" [ripple] [hidden]="!vm.editMode || this.presets.current.id != null" (click)="editMode(2)">Сохранить</button>
+        <div class="btn-group" dropdown [hidden]="!vm.editMode || this.presets.current.id == null">
+            <button type="button" class="btn btn-raised btn-success dropdown-toggle" dropdownToggle [ripple]>
+                Сохранить
+                <span class="caret"></span>
+            </button>
+            <ul dropdownMenu class="dropdown-menu">
+                <li><a href="#" (click)="editMode(1)">Сохранить</a></li>
+                <li><a href="#" (click)="editMode(2)">Сохранить как</a></li>
+            </ul>
+        </div>
+        
+        <button type="button" class="btn btn-raised btn-warning" [ripple] [hidden]="!vm.editMode" (click)="editMode()">Отменить</button>
+    </div>
+</div>
+
+<dashboard 
+    [preset]="presets.current" 
+    [isEditMode]="vm.editMode" 
+    [showElementPanels]="vm.showElementPanels"
+    [elements]="elements"
+    >
+</dashboard>

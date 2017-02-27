@@ -1,0 +1,30 @@
+.color0, .color0:hover, .color0:focus, .color0:active, .color0:checked {
+	background-color: forestgreen !important;
+}
+.color1, .color1:hover, .color1:focus, .color1:active, .color1:checked {
+	background-color: blueviolet !important;
+}
+.color2, .color2:hover, .color2:focus, .color2:active, .color2:checked {
+	background-color: cornflowerblue !important;
+}
+.color3, .color3:hover, .color3:focus, .color3:active, .color3:checked {
+	background-color: burlywood !important;
+}
+.color4, .color4:hover, .color4:focus, .color4:active, .color4:checked {
+	background-color: darkgoldenrod !important;
+}
+.color5, .color5:hover, .color5:focus, .color5:active, .color5:checked {
+	background-color: cadetblue !important;
+}
+.color6, .color6:hover, .color6:focus, .color6:active, .color6:checked {
+	background-color: deeppink !important;
+}
+.color7, .color7:hover, .color7:focus, .color7:active, .color7:checked {
+	background-color: dodgerblue !important;
+}
+.color8, .color8:hover, .color8:focus, .color8:active, .color8:checked {
+	background-color: darkcyan !important;
+}
+.color9, .color9:hover, .color9:focus, .color9:active, .color9:checked {
+	background-color: dimgray !important;
+}

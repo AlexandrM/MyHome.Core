@@ -1,0 +1,93 @@
+<br>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>Элемент: {{element?.name}}</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-sm-6">
+    <table class="table table-striped">
+      <tr>
+        <th style="width: 100%">Наименование</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let schedule of schedules">
+        <td>
+          <a href="#" (click)="loadSchedule(schedule); false;">{{schedule.name}}</a>
+        </td>
+        <td>
+          <button class="btn btn-danger btn-raised" [ripple] (click)="delete(schedule)">Удалить</button>
+        </td>
+      </tr> 
+      <tr>
+        <td>
+          <div class="form-group label-floating">
+            <label class="control-label" for="focusedInput1">Name</label>
+            <input class="form-control" id="focusedInput1" type="text" [(ngModel)]="newName">
+          </div>
+        </td>
+        <td>
+          <button class="btn btn-primary btn-raised" [ripple] (click)="add()">Добавить</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<div class="row" [hidden]="schedule.id == null">
+  <div class="col-md-3">
+    <h2>Режим: {{schedule?.name}}</h2>
+  </div>
+</div>
+
+<div class="row" [hidden]="schedule.id == null">
+  <div class="col-md-6">
+    <div class="form-group label-floating">
+      <label class="control-label" for="focusedInput1">Наименование</label>
+      <input class="form-control" id="focusedInput1" type="text" [(ngModel)]="schedule.name">
+    </div>
+    <button class="btn btn-primary btn-raised" [ripple] (click)="save()">Сохранить</button>
+    <button class="btn btn-warning btn-raised" [ripple] (click)="cancel()">Отмена</button>
+  </div>
+</div>
+
+
+<div class="row" [hidden]="schedule.id == null">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <td></td>
+        <td *ngFor="let dayOfWeek of dayOfWeeks">{{dayOfWeek}}</td>
+      </tr>
+      <tr *ngFor="let hour of hours">
+        <td>00:{{A.padLeft(hour, 2)}}</td>
+        <td *ngFor="let dayOfWeek of dayOfWeeks; let dayIdx = index">
+          <div class="btn-group" dropdown>
+              <button type="button" [ngClass]="dhClass(dayIdx, hour)" class="btn btn-raised btn-default dropdown-toggle" dropdownToggle>
+                  {{dhValueText(dayIdx, hour)}}
+                  <span class="caret"></span>
+              </button>
+              <ul dropdownMenu class="dropdown-menu">
+                  <li *ngFor="let value of this.element.enumValues">
+                      <a href="#" (click)="changeValue(dayIdx, hour, value.id); false;">{{value.name}}</a>
+                  </li>
+                  <li [hidden]="isEnum()">
+                      <a href="#" (click)="changeValue(dayIdx, hour, null); false;">Установить</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li><a href="#" (click)="changeValues(dayIdx, hour, 1); false;">Заменить вниз</a></li>
+                  <li><a href="#" (click)="changeValues(dayIdx, hour, 2); false;">Заменить вправо</a></li>
+                  <li><a href="#" (click)="changeValues(dayIdx, hour, 3); false;">Заменить 1 вниз</a></li>
+                  <li><a href="#" (click)="changeValues(dayIdx, hour, 4); false;">Заменить 1 вправо</a></li>
+                  <li><a href="#" (click)="changeValue(dayIdx, hour, null); false;">Не выбрано</a></li>
+              </ul>
+          </div>          
+        </td>
+      </tr>
+    </table>
+  </div>
+<div>

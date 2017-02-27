@@ -1,0 +1,40 @@
+<div class="">
+  <div class="">
+    <b>{{element.name}}</b>
+  </div>
+
+  <div class="" [hidden]>
+    <span class="value text-info">{{element.value?.value == null ? element.value?.rawValue : element.value?.value?.name}}</span>
+    <span class="pull-right" title="{{element.value?.updated | date: 'HH:mm:ss dd/MM/yyyy'}}">
+      {{element.value?.dateTime | date: 'HH:mm:ss dd/MM/yyyy'}}
+    </span>  
+  </div>
+  <div class="btn-group" dropdown [hidden]="element.value?.value == null">
+      <button [ripple] dropdownToggle class="btn btn-primary btn-raised">
+          {{element.value?.value?.name}}
+          <span class="caret"></span>
+      </button>
+      <ul dropdownMenu class="dropdown-menu">
+        <li *ngFor="let item of this.elementEnums">
+          <a href="#" (click)="changeValue(item)" class="">{{item.name}}</a>
+        </li>
+      </ul>
+  </div>
+  <div [hidden]="element.type != 2 || element.isEnum" class="btn-group">
+    <button [ripple] class="btn btn-primary btn-raised" (click)=changeRawValue()>Изменить</button>
+  </div>
+  <div class="btn-group" dropdown [hidden]="element.type != 2 || !element.allowSchedule">
+      <button [ripple] dropdownToggle class="btn btn-warning btn-raised">
+          {{element.mode == null ? 'Выключен' : element.mode.name}}
+          <span class="caret"></span>
+      </button>
+      <ul dropdownMenu class="dropdown-menu">
+        <li *ngFor="let schedule of schedules">
+          <a href="#" (click)="modeSet(schedule)" class="">{{schedule.name}}</a>
+        </li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#" (click)="modeSet()" class="">Выключен</a><li>
+        <li><a [routerLink]="['/schedule', element.id]">Редактор</a><li>
+      </ul>
+  </div>
+</div>
