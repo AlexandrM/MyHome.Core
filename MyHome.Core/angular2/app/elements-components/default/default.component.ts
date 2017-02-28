@@ -21,7 +21,6 @@ export class ElementDefaultComponent {
 
     element = new PresetElementModel();
     elementEnums = new Array<PresetElementEnumModel>();
-    //schedules = new Array<ScheduleModel>();
     schedules: Array<ScheduleModel>;
 
     @Input()

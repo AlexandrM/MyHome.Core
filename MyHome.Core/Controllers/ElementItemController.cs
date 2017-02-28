@@ -12,27 +12,27 @@ using Microsoft.EntityFrameworkCore;
 namespace MyHome.Core.Controllers
 {
     [Route("api/[controller]")]
-    public class ElementController : Controller
+    public class ElementItemController : Controller
     {
         DB _db;
         Microsoft.AspNetCore.Hosting.IHostingEnvironment _env;
 
-        public ElementController(DB db, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
+        public ElementItemController(DB db, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             this._db = db;
             _env = env;
         }
 
-        [HttpGet]
-        public dynamic Get()
+        [HttpPost]
+        public dynamic Post([FromBody] ElementItemModel model)
         {
-            var model = _db.Elements
-                .AsNoTracking()
-                .Include(x => x.Items).ThenInclude(item => item.EnumValues)
-                .Include(x => x.Items).ThenInclude(item => item.Mode)
-                .ToList();
-
-            return model;
+            var db = _db.ElementItems.FirstOrDefault(x => x.Id == model.Id);
+            if (db != null)
+            {
+                db.Name = model.Name;
+                _db.SaveChanges();
+            }
+            return db;
         }
     }
 }

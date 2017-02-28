@@ -1,6 +1,7 @@
 //import { IPresetModel, IPresetRowModel, IPresetColumnModel } from './dashboard/interfaces';
 import { Response } from '@angular/http';
 import { SettingService } from 'app/services/setting.service'
+import { ElementService } from 'app/services/element.service'
 
 export class PresetModel {
 
@@ -78,6 +79,7 @@ export class Presets {
 export class PresetElementModel {
     id: string;
     name: string;
+    description: string;
     type: string;
     allowSchedule: boolean;
     modeId: string;

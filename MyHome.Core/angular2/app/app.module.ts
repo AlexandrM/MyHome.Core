@@ -8,6 +8,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { RippleDirective } from 'ng2-ripple-directive';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+import { PopoverModule } from 'ng2-bootstrap/popover';
 
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
@@ -22,6 +23,7 @@ import { HomeComponent, DashboardComponent, ElementPanelComponent } from './home
 import { ScheduleComponent } from './schedule/schedule.component';
 
 import { ElementDefaultComponent } from './elements-components/default/default.component';
+import { ElementNameComponent } from './elements-components/element-name/element-name.component';
 
 import { ASE } from 'ase-ts-tools';
 
@@ -31,6 +33,7 @@ import { ElementService } from './services/element.service';
 import { ElementItemEnumService } from './services/elementItemEnum.service';
 import { ScheduleService } from './services/schedule.service';
 import { ElementItemModeService } from 'app/services/elementItemMode.service'
+import { ElementItemService } from './services/elementItem.service';
 
 const APP_PROVIDERS = [
     ASE,
@@ -40,7 +43,8 @@ const APP_PROVIDERS = [
     DataService,
     ElementItemEnumService,
     ScheduleService,
-    ElementItemModeService
+    ElementItemModeService,
+    ElementItemService,
 ];
 
 @NgModule({
@@ -57,6 +61,7 @@ const APP_PROVIDERS = [
     ScheduleComponent,
 
     ElementDefaultComponent,
+    ElementNameComponent,
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -65,7 +70,8 @@ const APP_PROVIDERS = [
     RouterModule.forRoot(ROUTES, { useHash: false, preloadingStrategy: PreloadAllModules }),
     DropdownModule.forRoot(),
     ModalModule.forRoot(),
-    BootstrapModalModule    
+    BootstrapModalModule,
+    PopoverModule.forRoot()  
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

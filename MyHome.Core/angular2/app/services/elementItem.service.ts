@@ -7,21 +7,12 @@ import 'rxjs/add/operator/map';
 import { PresetElementModel } from 'app/models';
 
 @Injectable()
-export class ElementService {
-    private api = '/element';
+export class ElementItemService {
+    private api = '/elementItem';
 
     constructor(private http: Http) { 
     }
      
-    query() {
-        let params: URLSearchParams = new URLSearchParams();
-
-        return this.http.get(
-            `${API_URL}` + this.api, 
-            { search: params })
-            .map((res: Response) => res.json());
-    }    
-
     post(model: PresetElementModel) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');        

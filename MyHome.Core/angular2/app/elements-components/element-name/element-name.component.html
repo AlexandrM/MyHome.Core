@@ -1,0 +1,10 @@
+<!--
+<b class="btn btn-primary pad-left-0" role="button" title="{{element.name}}" [popover]="nameTemplate">{{element.name}}</b>
+<template #nameTemplate>
+  <div class="form-group has-success">
+    <label class="control-label" for="inputSuccess">Наименование</label>
+    <input class="form-control" id="focusedInput1" type="text" [(ngModel)]="element.name">
+  </div>
+</template>
+-->
+<b class="btn btn-primary pad-left-0" role="button" title="{{element.name}}" (click)="edit()">{{element.name}}</b>

@@ -16,3 +16,7 @@ body {
 [hidden] {
     display: none !important;
 }
+
+.pad-left-0 {
+    padding-left: 0px;
+}
