@@ -21,17 +21,9 @@ import '@angularclass/hmr';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-//CSS
-//import 'jquery/dist/jquery.min.js';
-//import 'bootstrap/dist/js/bootstrap';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//import 'bootstrap/dist/css/bootstrap';
-//import 'bootstrap/dist/js/bootstrap';
-//import 'bootstrap-material-design/dist/css';
-//import 'bootstrap-material-design/dist/js';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//import 'bootstrap-material-design/dist/css/bootstrap-material-design.min.css';
-//import 'bootstrap-material-design/dist/css/ripples.min.css';
+import 'jquery';
+import 'moment/moment';
+import 'moment/locale/ru';
 
 // Dependencies
 if ('production' === ENV) {

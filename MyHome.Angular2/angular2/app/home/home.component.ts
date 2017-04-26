@@ -11,6 +11,7 @@ import { SettingService } from 'app/services/setting.service'
 import { ElementService } from 'app/services/element.service'
 import { ManageHubService } from 'app/services/manageHub.service'
 import { DataService } from 'app/services/data.service'
+import { RLDb } from 'app/services/RLDB'
 
 
 @Component({

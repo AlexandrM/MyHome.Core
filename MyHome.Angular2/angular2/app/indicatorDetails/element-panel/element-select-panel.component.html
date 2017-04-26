@@ -1,0 +1,24 @@
+<div class="elements-bar">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Доступные элементы</div>
+        <div class="panel-body">
+            <ul class="nav nav nav-tabs">
+                <li *ngFor="let element of elements" [class.active]="activeTab == element.id">
+                    <a href="#home" data-toggle="tab" (click)="this.activeTab = element.id">{{element.name}}</a>
+                </li>
+            </ul>            
+            <div class="tab-content">
+                <div 
+                    class="tab-pane fade in" 
+                    [class.active]="activeTab == element.id"
+                    *ngFor="let element of elements"
+                    >
+
+                    <button class="btn btn-primary btn-raised" *ngFor="let item of element.items" [ripple] >
+                        {{item.name}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

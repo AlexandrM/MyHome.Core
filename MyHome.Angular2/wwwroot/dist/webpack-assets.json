@@ -1,0 +1,11 @@
+{
+  "main": {
+    "js": "dist/main.bundle.js"
+  },
+  "vendor": {
+    "js": "dist/vendor.bundle.js"
+  },
+  "polyfills": {
+    "js": "dist/polyfills.bundle.js"
+  }
+}

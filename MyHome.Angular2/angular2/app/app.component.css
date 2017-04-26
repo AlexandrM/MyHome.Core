@@ -1,6 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import '~ng2-ripple-directive/src/scss/ripple.scss';
 @import '~bootstrap-material-design/dist/css/bootstrap-material-design.css';
+@import '~bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css';
 
 body {
     padding-top: 50px;

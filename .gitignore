@@ -23,3 +23,4 @@ MyHome.Core/.editorconfig
 MyHome.Core.Plugin.ValueKeeper/project.lock.json
 MyHome.Core/wwwroot/
 MyHome.Core/Plugins/
+MyHome.Angular2/node_modules/

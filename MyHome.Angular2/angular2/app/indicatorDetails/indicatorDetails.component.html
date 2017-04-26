@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="form-inline col-md-10">
+        <div class="form-group label-floating">
+            <label class="control-label">Дата с: </label>
+            <div class="input-group">
+                <input type="text" datetimepicker class="form-control" [(date)]="dateFrom">
+            </div>
+        </div>
+        <div class="form-group label-floating">
+            <label class="control-label">Дата по: </label>
+            <div class="input-group">
+                <input type="text" datetimepicker class="form-control" [(date)]="dateTo">
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" class="form-control" [checked]="dateToToday" (change)="dateToToday = !dateToToday">
+            <label>Сегодня</label>
+        </div>
+        <button class="btn btn-success btn-raised" (click)="refresh()">обновить<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+    </div>
+</div>
+
+<element-select-panel 
+    [elements]="elements"
+    >
+</element-select-panel>

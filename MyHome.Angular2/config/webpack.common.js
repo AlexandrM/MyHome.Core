@@ -61,7 +61,6 @@ module.exports = function (options) {
       'polyfills': './angular2/polyfills.browser.ts',
       'vendor':    './angular2/vendor.browser.ts',
       'main':      './angular2/main.browser.ts'
-
     },
 
     /*
@@ -335,6 +334,8 @@ module.exports = function (options) {
           jQuery: "jquery",
           'window.$': 'jquery',
           'window.jQuery': 'jquery',
+          'window.moment': 'moment',
+          moment:'moment' ,
       }),
     ],
 

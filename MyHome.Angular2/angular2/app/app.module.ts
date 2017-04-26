@@ -9,6 +9,7 @@ import { RippleDirective } from 'ng2-ripple-directive';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import { PopoverModule } from 'ng2-bootstrap/popover';
+import { DatePickerDirective } from 'bootstrap-material-datetimepicker';
 
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
@@ -21,6 +22,7 @@ import { CustomRequestOptions } from './shared/customRequestOptions';
 import { AppComponent } from './app.component';
 import { HomeComponent, DashboardComponent, ElementPanelComponent } from './home';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { ElementSelectPanelComponent } from './indicatorDetails/element-panel/element-select-panel.component';
 
 import { ElementDefaultComponent } from './elements-components/default/default.component';
 import { ElementNameComponent } from './elements-components/element-name/element-name.component';
@@ -34,6 +36,8 @@ import { ElementItemEnumService } from './services/elementItemEnum.service';
 import { ScheduleService } from './services/schedule.service';
 import { ElementItemModeService } from 'app/services/elementItemMode.service'
 import { ElementItemService } from './services/elementItem.service';
+
+import * as moment from 'moment/moment';
 
 const APP_PROVIDERS = [
     ASE,
@@ -54,11 +58,13 @@ const APP_PROVIDERS = [
   declarations: [
     AppComponent,
     RippleDirective,
+    DatePickerDirective,
     HomeComponent,
     IndicatorDetailsComponent,
     DashboardComponent,
     ElementPanelComponent,
     ScheduleComponent,
+    ElementSelectPanelComponent,
 
     ElementDefaultComponent,
     ElementNameComponent,
@@ -81,7 +87,7 @@ const APP_PROVIDERS = [
 export class AppModule {
 
   constructor(public appRef: ApplicationRef) {    
+    moment.locale("ru");
   }
-
 }
 
