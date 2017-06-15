@@ -24,3 +24,14 @@ MyHome.Core.Plugin.ValueKeeper/project.lock.json
 MyHome.Core/wwwroot/
 MyHome.Core/Plugins/
 MyHome.Angular2/node_modules/
+Backup/
+MyHome.Core.Plugin.iSpyManager/obj/
+MyHome.Core.Plugin.iSpyManager/bin/
+MyHome.Angular2/-e2e/
+UpgradeLog.htm
+MyHome.Core.Plugin.DeviceAK1/out/Autofac.dll
+MyHome.Core.Plugin.DeviceAK1/out/
+MyHome.Core.Plugin.iSpyManager/out/
+MyHome.Core.Plugin.ValueKeeper/out/
+MyHome.Core.Shared/out/
+MyHome.Core/out/

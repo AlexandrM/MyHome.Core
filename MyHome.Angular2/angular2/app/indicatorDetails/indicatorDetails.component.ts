@@ -1,10 +1,11 @@
 import { Component, Input, NgZone } from '@angular/core'
 import { D3Service } from 'd3-ng2-service'
+import { ElementSelectPanelComponent } from './element-panel/element-select-panel.component';
 
 import { Presets, PresetModel, PresetRowModel, PresetColumnModel, PresetElementModel } from 'app/models';
 import { DataService } from 'app/services/data.service'
 import { ManageHubService } from 'app/services/manageHub.service'
-//import { SettingService } from 'app/services/setting.service'
+import { D3Graph } from './d3graph/d3graph.component'
 
 @Component({
     selector: 'indicatorDetails',
@@ -19,7 +20,6 @@ import { ManageHubService } from 'app/services/manageHub.service'
 export class IndicatorDetailsComponent {
 
     public elements = Array<PresetElementModel>();
-    //public presets = new Presets();
     
     public dateFrom = new Date();
     public dateTo = new Date();
@@ -30,8 +30,9 @@ export class IndicatorDetailsComponent {
         private dataService: DataService,
         private manageHubService: ManageHubService,
         private ngZone: NgZone,
-        //private settingService: SettingService,
     ) {
+        this.elements = this.dataService.elements;
+
         dataService.onRefresh.subscribe(() => {
             this.elements = this.dataService.elements;
         });

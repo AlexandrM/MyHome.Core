@@ -1,0 +1,6 @@
+MyHome.Core\logs
+MyHome.Core\out
+MyHome.Core.Shared\out
+MyHome.Core.Plugin.DeviceAK1\out
+MyHome.Core.Plugin.ValueKeeper\out
+MyHome.Core.Plugin.iSpyManager\out

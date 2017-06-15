@@ -40,6 +40,7 @@ export class HomeComponent {
 
         overlay.defaultViewContainer = vcRef;
 
+        this.elements = this.dataService.elements;
         dataService.onRefresh.subscribe(() => {
             this.elements = this.dataService.elements;
         });

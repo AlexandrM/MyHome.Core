@@ -2,6 +2,7 @@ import { Injectable, Output } from '@angular/core';
 import 'signalr/jquery.signalR.min';
 import { EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 import { PresetElementModel, ElementItemValueModel, PresetElementEnumModel } from './../models';
 import { ManageHubService } from './manageHub.service';
@@ -13,6 +14,9 @@ export class DataService {
 
 	public elements = Array<PresetElementModel>();
 	public elementEnums = Array<PresetElementEnumModel>();
+	//public elements = new Observable<Array<PresetElementModel>>()
+	//public elementEnums = new Observable<Array<PresetElementEnumModel>>();
+	//public elementValues = new Observable<Array<ElementItemValueModel>>()
 
 	onRefresh = new EventEmitter<ElementItemValueModel>();
 
@@ -22,6 +26,7 @@ export class DataService {
 		private elementItemEnumService: ElementItemEnumService,
 		
 	) {
+		console.log('DataService.constructor');
         this.manageHubService.onGetLastElementItemValues.subscribe((values) => {
             values.map((a) => {
                 let e = this.findElement(a.elementItemId);

@@ -26,15 +26,15 @@
                     <span class="caret"></span>
                 </button>
                 <ul dropdownMenu class="dropdown-menu">
-                    <li><a href="#" (click)="changeType(element, 'default')" [ngClass]="{'bold': element.type == 'default'}">Стандартный</a></li>
-                    <li><a href="#" (click)="changeType(element, 'thermometer')" [ngClass]="{'bold': element.type == 'thermometer'}">Термометр</a></li>
+                    <li><a href="#" (click)="changeType(element, 'default')" [ngClass]="{'bold': element.viewType == 'default'}">Стандартный</a></li>
+                    <li><a href="#" (click)="changeType(element, 'thermometer')" [ngClass]="{'bold': element.viewType == 'thermometer'}">Термометр</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#" (click)="delete(column, element)" class="">Удалить</a></li>
                 </ul>
             </div>
 
             <div *ngFor="let element of column.elements" [hidden]="isEditMode" >
-                <element-default [hidden]="element.type != 'default'" [elementId]="element.id"></element-default>
+                <element-default *ngIf="element.viewType == 'default' || element.viewType == undefined" [elementId]="element.id"></element-default>
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@
         <div class="panel-body">
             <ul class="nav nav nav-tabs">
                 <li *ngFor="let element of elements" [class.active]="activeTab == element.id">
-                    <a href="#home" data-toggle="tab" (click)="this.activeTab = element.id">{{element.name}}</a>
+                    <a data-toggle="tab" (click)="this.activeTab = element.id">{{element.name}}</a>
                 </li>
             </ul>            
             <div class="tab-content">
@@ -14,7 +14,7 @@
                     *ngFor="let element of elements"
                     >
 
-                    <button class="btn btn-primary btn-raised" *ngFor="let item of element.items" [ripple] >
+                    <button class="btn btn-primary" [class.btn-raised]="item.selected" *ngFor="let item of element.items" [ripple] (click)="item.selected = !item.selected">
                         {{item.name}}
                     </button>
                 </div>

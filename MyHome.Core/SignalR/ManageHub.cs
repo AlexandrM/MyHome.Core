@@ -48,6 +48,17 @@ namespace MyHome.Core.SignalR
 
         public void afterChangeElementItemValue(ElementItemValueModel value)
         {
+            if (value.ElementItem != null)
+            {
+                if (value.ElementItem.Element != null)
+                {
+                    if (value.ElementItem.Element.Items != null)
+                    {
+                        value.ElementItem.Element.Items = null;
+                    }
+                }
+            }
+
             Clients.All.onAfterChangeElementItemValue(value);
         }
         

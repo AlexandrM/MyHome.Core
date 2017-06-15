@@ -9,7 +9,7 @@
       {{element.value?.dateTime | date: 'HH:mm:ss dd/MM/yyyy'}}
     </span>  
   </div>
-  <div class="btn-group" dropdown [hidden]="element.value?.value == null">
+  <div class="btn-group" dropdown [hidden]="!element.isEnum">
       <button [ripple] dropdownToggle class="btn btn-primary btn-raised">
           {{element.value?.value?.name}}
           <span class="caret"></span>

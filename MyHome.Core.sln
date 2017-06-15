@@ -1,23 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{888D1EEB-B8BD-47BF-A483-D69FDB2DCADB}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
 		NuGet.config = NuGet.config
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MyHome.Core", "MyHome.Core\MyHome.Core.xproj", "{D64E7100-F26B-4F8C-B22A-3C945EB5073F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyHome.Core", "MyHome.Core\MyHome.Core.csproj", "{D64E7100-F26B-4F8C-B22A-3C945EB5073F}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MyHome.Core.Shared", "MyHome.Core.Shared\MyHome.Core.Shared.xproj", "{CEED6E7B-7F88-4F72-8094-57B3812D85B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyHome.Core.Shared", "MyHome.Core.Shared\MyHome.Core.Shared.csproj", "{CEED6E7B-7F88-4F72-8094-57B3812D85B0}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MyHome.Core.Plugin.DeviceAK1", "MyHome.Core.Plugin.DeviceAK1\MyHome.Core.Plugin.DeviceAK1.xproj", "{57620288-DF0A-44CD-BE6D-911165A82F47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyHome.Core.Plugin.DeviceAK1", "MyHome.Core.Plugin.DeviceAK1\MyHome.Core.Plugin.DeviceAK1.csproj", "{57620288-DF0A-44CD-BE6D-911165A82F47}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Hangfire.MemoryStorage", "..\Hangfire.MemoryStorage\src\Hangfire.MemoryStorage\Hangfire.MemoryStorage.xproj", "{5F42DF92-7226-4C35-A515-88062683B6CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hangfire.MemoryStorage", "..\Hangfire.MemoryStorage\src\Hangfire.MemoryStorage\Hangfire.MemoryStorage.csproj", "{5F42DF92-7226-4C35-A515-88062683B6CE}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MyHome.Core.Plugin.ValueKeeper", "MyHome.Core.Plugin.ValueKeeper\MyHome.Core.Plugin.ValueKeeper.xproj", "{2AC0C25C-CC7A-4667-9D9B-02BFD5F5CCAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyHome.Core.Plugin.ValueKeeper", "MyHome.Core.Plugin.ValueKeeper\MyHome.Core.Plugin.ValueKeeper.csproj", "{2AC0C25C-CC7A-4667-9D9B-02BFD5F5CCAD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyHome.Core.Plugin.iSpyManager", "MyHome.Core.Plugin.iSpyManager\MyHome.Core.Plugin.iSpyManager.csproj", "{E135A937-154C-4AD0-91FA-3C895CB362D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +46,10 @@ Global
 		{2AC0C25C-CC7A-4667-9D9B-02BFD5F5CCAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AC0C25C-CC7A-4667-9D9B-02BFD5F5CCAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AC0C25C-CC7A-4667-9D9B-02BFD5F5CCAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E135A937-154C-4AD0-91FA-3C895CB362D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E135A937-154C-4AD0-91FA-3C895CB362D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E135A937-154C-4AD0-91FA-3C895CB362D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E135A937-154C-4AD0-91FA-3C895CB362D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -23,7 +23,6 @@ namespace MyHome.Core.Plugin.ValueKeeper
             _db = db;
         }
 
-
         private string KeyRoot = "MyHome.Core.Plugin.ValueKeeper";
 
         public Task<bool> Init()

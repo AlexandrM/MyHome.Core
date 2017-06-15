@@ -20,18 +20,6 @@ namespace MyHome.Core.Plugin
         IServiceProvider _sp;
         IConfigurationRoot _cfg;
 
-        /*public List<Type> _plugins = new List<Type>();
-        public List<Type> Plugins
-        {
-            get
-            {
-                lock (_plugins)
-                {
-                    return _plugins.ToList();
-                }
-            }
-        }*/
-
         public PluginManager(IServiceProvider sp, IConfigurationRoot cfg)
         {
             _sp = sp;
@@ -45,11 +33,29 @@ namespace MyHome.Core.Plugin
             var root = new System.IO.FileInfo(System.Reflection.Assembly.GetEntryAssembly().Location).Directory;
             var plugins = _cfg.GetSection("Plugins").GetValue<string>("Folder");
 
+            var copyFrom = _cfg.GetSection("Plugins").GetSection("CopyFrom");
+            if (copyFrom != null)
+            { 
+                var copyList = copyFrom.GetChildren().ToList();
+                foreach(var item in copyList)
+                {
+                    if (System.IO.File.Exists(item.Value))
+                    {
+                        var fi = new FileInfo(item.Value);
+                        System.IO.File.Copy(item.Value, String.Format("{0}\\{1}\\{2}", root, plugins, fi.Name), true);
+                    }
+                }
+            }
+            
+            if (!System.IO.Directory.Exists(String.Format("{0}\\{1}", root, plugins)))
+            {
+                System.IO.Directory.CreateDirectory(String.Format("{0}\\{1}", root, plugins));
+            }
             var files = Directory.GetFiles(String.Format("{0}\\{1}", root, plugins), "*.dll");
 
-            try
+            foreach (var file in files)
             {
-                foreach (var file in files)
+                try
                 {
                     var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(file);
                     foreach (var type in assembly.GetTypes())
@@ -60,12 +66,12 @@ namespace MyHome.Core.Plugin
                         }
                     }
                 }
-            }
-            catch
-            {
+                catch(Exception exc)
+                {
 
+                }
             }
-            
+
             return _plugins;
         }
     }

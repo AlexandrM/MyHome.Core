@@ -50,6 +50,9 @@ export class ElementDefaultComponent {
     doRefresh(element) {
         this.ngZone.run(() => {            
             this.element = element || this.element;
+            if (this.elementId == 'MyHome.Core.Plugin.iSpyManager.Mode') {
+                console.log(element, this.element);
+            }
             if (this.element.value != null) {
                 this.element.value.value = this.dataService.elementEnums.find(x => x.id == this.element.value.valueId);
                 this.elementEnums = this.dataService.elementEnums.filter(x => x.elementItemId == this.element.id);

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ASE } from 'ase-ts-tools';
 
 import { ElementPanelComponent } from './element-panel/element-panel.component';
@@ -11,7 +11,7 @@ declare var $: any;
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnChanges  {
 
     @Input() preset: IDashboardModel;
     @Input() isEditMode: boolean;
@@ -28,6 +28,8 @@ export class DashboardComponent implements OnInit {
         this.preset.rows = this.preset.rows || [];
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+    }
 
     onDrop(e, row: IDashboardRowModel, column: IDashboardColumnModel) {
         if (e.dataTransfer.getData('moving') == 'true') {
@@ -46,7 +48,7 @@ export class DashboardComponent implements OnInit {
             this.elements.find((val, idx, arr) => {
                 return val.items.find((val2, idx2, arr2) => {
                     if (val2.id == e.dataTransfer.getData('elementId')) {
-                        val2.type = 'default';
+                        val2.viewType = 'default';
                         column.elements.push(val2);
                         return true;
                     }
@@ -95,13 +97,13 @@ export class DashboardComponent implements OnInit {
             return v.id == element.id;
         });
         if (e1 != null) {
-            element.type = type;
+            element.viewType = type;
         }
         ASE.a.recursive(this.preset.rows, (row) => {
             return ASE.a.recursive(row.columns, (rcolumn) => {
                 return ASE.a.recursive(rcolumn.elements, (elementR, idx) => {
                     if (elementR.id == element.id) {
-                        elementR.type = type;
+                        elementR.viewType = type;
                     }
                     return false;
                 });
