@@ -1,6 +1,7 @@
-import { Injectable }              from '@angular/core';
-import { Http, Response, URLSearchParams, Headers }          from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Response, URLSearchParams, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { ASE } from 'ase-ts-tools';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
@@ -16,10 +17,10 @@ export class ElementItemService {
     post(model: PresetElementModel) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');        
-       
+
         return this.http.post(
             `${API_URL}` + this.api, 
-            JSON.stringify(model),
+            ASE.json.stringify(model),
             { headers: headers}
             ).map((res: Response) => res.json());
     }    

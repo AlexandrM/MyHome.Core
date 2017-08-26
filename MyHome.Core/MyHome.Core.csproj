@@ -12,6 +12,12 @@
 
   <ItemGroup>
     <Compile Remove="node_modules\**\*;angular2;.vscode\**\*" />
+    <Content Remove="Plugins\MyHome.Core.Plugin.DeviceAK1.deps.json" />
+    <Content Remove="Plugins\MyHome.Core.Plugin.ValueKeeper.deps.json" />
+    <None Remove="Plugins\MyHome.Core.Plugin.DeviceAK1.dll" />
+    <None Remove="Plugins\MyHome.Core.Plugin.DeviceAK1.pdb" />
+    <None Remove="Plugins\MyHome.Core.Plugin.ValueKeeper.dll" />
+    <None Remove="Plugins\MyHome.Core.Plugin.ValueKeeper.pdb" />
     <None Update="wwwroot\**\*;logs\**\*;Plugins\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>

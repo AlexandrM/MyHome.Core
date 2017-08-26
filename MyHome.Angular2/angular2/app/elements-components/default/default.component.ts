@@ -36,15 +36,6 @@ export class ElementDefaultComponent {
         private modal: Modal,
     ) {
         overlay.defaultViewContainer = vcRef;
-        
-        this.dataService.onRefresh.subscribe(value => {
-            if (value == null) {
-                this.element = this.dataService.findElement(this.elementId);
-            } else if (value.elementItemId == this.element.id) {
-                this.element.value = value;
-            }
-            this.doRefresh(null);
-        });
     }
 
     doRefresh(element) {
@@ -54,24 +45,20 @@ export class ElementDefaultComponent {
                 console.log(element, this.element);
             }
             if (this.element.value != null) {
-                this.element.value.value = this.dataService.elementEnums.find(x => x.id == this.element.value.valueId);
-                this.elementEnums = this.dataService.elementEnums.filter(x => x.elementItemId == this.element.id);
+                this.elementEnums = this.element.enumValues;
+                this.element.value.value = this.elementEnums.find(v => v.id == this.element.value.valueId);
             }
-            if ((this.schedules == undefined) && (this.element.id != undefined) && (this.element.allowSchedule)) {
-                this.scheduleService.get(this.element.id).subscribe(data => {
-                    this.schedules =  data.list;
-                    this.schedules = this.schedules.sort((a, b) => { 
-                        if(a.name < b.name) return -1;
-                        if(a.name > b.name) return 1;
-                        return 0; 
-                    });
-                });
-            }
+        });
+
+        this.scheduleService.get(this.elementId).subscribe(r => {
+            this.schedules = r.list;
         });
     }
 
     ngOnInit() {
-        this.doRefresh(this.dataService.findElement(this.elementId));
+        this.dataService.getElement(this.elementId).subscribe(v => {
+            this.doRefresh(v);
+        });
     }
 
     changeValue(item: PresetElementEnumModel) {

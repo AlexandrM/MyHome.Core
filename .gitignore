@@ -35,3 +35,5 @@ MyHome.Core.Plugin.iSpyManager/out/
 MyHome.Core.Plugin.ValueKeeper/out/
 MyHome.Core.Shared/out/
 MyHome.Core/out/
+MyHome.Core/MyHome.Core.csproj.user
+MyHome.Angular2/wwwroot/

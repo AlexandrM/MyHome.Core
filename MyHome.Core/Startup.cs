@@ -158,8 +158,6 @@ namespace MyHome.Core
             {
                 plugin.Init();
                 plugin.Process();
-
-                RecurringJob.AddOrUpdate(() => plugin.Process(), Cron.Minutely());
             }
 
             RecurringJob.AddOrUpdate(() => ApplicationContainer.Resolve<ScheduleJob>().Process(), Cron.Minutely());

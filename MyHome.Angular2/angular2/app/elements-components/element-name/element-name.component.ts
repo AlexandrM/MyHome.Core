@@ -42,7 +42,6 @@ export class ElementNameComponent implements OnInit {
                     }
                     this.element.name = data;
                     this.elementItemService.post(this.element).subscribe(r => {
-                        console.log(r);                        
                         this.element.name = r.name;
                     });
                 }).catch((data) => {

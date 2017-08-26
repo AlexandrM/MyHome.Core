@@ -31,25 +31,19 @@ export class IndicatorDetailsComponent {
         private manageHubService: ManageHubService,
         private ngZone: NgZone,
     ) {
-        this.elements = this.dataService.elements;
-
-        dataService.onRefresh.subscribe(() => {
-            this.elements = this.dataService.elements;
-        });
-
-        manageHubService.onConnected.subscribe(() =>{
-            this.load();
+        this.dataService.getElements().subscribe(v => {
+            this.elements  = v;
         });
     }
 
     load() {
-        this.ngZone.run(() => {            
+        /*this.ngZone.run(() => {            
             if (this.dataService.elements.length == 0) {
                 this.dataService.reloadElements();
             } else {
                 this.elements = this.dataService.elements;
             }
-        });
+        });*/
     }
 
     ngOnInit() {

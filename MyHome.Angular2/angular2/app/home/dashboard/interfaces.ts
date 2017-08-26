@@ -15,6 +15,7 @@ export interface IDashboardColumnModel {
 
 export interface IDashboardElementModel {
     id: string;
+    parent: IDashboardElementModel;
     name: string;
     viewType: string;
     items: Array<IDashboardElementModel>;

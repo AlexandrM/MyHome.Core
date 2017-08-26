@@ -1,10 +1,10 @@
 <div class="elements-bar">
     <div class="panel panel-primary">
-        <div class="panel-heading">Доступные элементы</div>
+        <div class="panel-heading">Доступные элементы {{this.activeTab}}</div>
         <div class="panel-body">
-            <ul class="nav nav nav-tabs">
+            <ul class="nav nav-tabs">
                 <li *ngFor="let element of elements" [class.active]="activeTab == element.id">
-                    <a href="#" data-toggle="tab" (click)="this.activeTab = element.id">{{element.name}}</a>
+                    <a href="#" data-toggle="tab1" (click)="activeTab = element.id">{{element.name}}</a>
                 </li>
             </ul>            
             <div class="tab-content">

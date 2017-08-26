@@ -22,6 +22,11 @@ namespace MyHome.Core.Hangfire
 
         public async Task<bool> Process()
         {
+            foreach (var plugin in _plugins)
+            {
+                await plugin.Process();
+            }
+
             var now = DateTime.Now;
             int dw = (int)DateTime.Now.DayOfWeek;
             dw = dw == 0 ? dw = 6 : dw - 1;

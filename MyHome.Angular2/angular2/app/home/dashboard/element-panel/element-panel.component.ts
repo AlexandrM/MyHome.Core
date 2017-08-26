@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone, SimpleChanges } from '@angular/core';
 
 import { IDashboardElementModel } from '../interfaces';
 
@@ -12,20 +12,22 @@ export class ElementPanelComponent implements OnInit {
   @Input() elements: Array<IDashboardElementModel>
   activeTab: string;
 
-  constructor() { 
+  constructor(private ngZone: NgZone) { 
   }
 
   ngOnInit() {
-  }
+    console.log(this.elements);
 
-  ngOnChanges() {
     this.elements.sort((a, b) => {
       if(a.name < b.name) return -1;
       if(a.name > b.name) return 1;
       return 0;
     });
-
     this.activeTab = this.elements.length == 0 ? '' : this.elements[0].id;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('ngOnChanges', changes);
   }
 
   onDragstart(e, element) {

@@ -10,6 +10,7 @@ export class PresetModel {
     rows: PresetRowModel[];
 
     save(settingService: SettingService) {
+        console.log(this.rows);
         return settingService.post({
             id: this.id,
             name: this.name,
@@ -78,6 +79,7 @@ export class Presets {
 
 export class PresetElementModel {
     id: string;
+    parent: PresetElementModel;
     name: string;
     description: string;
     type: string;

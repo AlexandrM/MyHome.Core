@@ -64,7 +64,7 @@
         <td *ngFor="let dayOfWeek of dayOfWeeks">{{dayOfWeek}}</td>
       </tr>
       <tr *ngFor="let hour of hours">
-        <td>00:{{A.padLeft(hour, 2)}}</td>
+        <td>{{A.padLeft(hour, 2)}}:00</td>
         <td *ngFor="let dayOfWeek of dayOfWeeks; let dayIdx = index">
           <div class="btn-group" dropdown>
               <button type="button" [ngClass]="dhClass(dayIdx, hour)" class="btn btn-raised btn-default dropdown-toggle" dropdownToggle>

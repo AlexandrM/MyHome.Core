@@ -27,6 +27,9 @@ import { RLDb } from 'app/services/RLDB'
 })
 export class HomeComponent {
 
+    presets = new Presets();
+    elements = Array<PresetElementModel>();
+
     constructor(
         private settingService: SettingService,
         private elementService: ElementService,
@@ -37,24 +40,18 @@ export class HomeComponent {
         vcRef: ViewContainerRef,
         private modal: Modal
     ) {
-
         overlay.defaultViewContainer = vcRef;
 
-        this.elements = this.dataService.elements;
-        dataService.onRefresh.subscribe(() => {
-            this.elements = this.dataService.elements;
-        });
-
-        manageHubService.onConnected.subscribe(() =>{
-            this.load();
+        this.dataService.getElements().subscribe(v => {
+            this.elements  = v;
         });
     }
 
     load() {
-        this.ngZone.run(() => {            
+        //this.ngZone.run(() => {            
             this.presets.load(this.settingService);
             this.presets.current = new PresetModel();
-        });
+        //});
     }
 
     ngOnInit() {
@@ -68,9 +65,6 @@ export class HomeComponent {
     rootViewModel = {
         Name: '',
     }
-
-    presets = new Presets();
-    elements = Array<PresetElementModel>();
 
     addRow() {
         if (this.presets.current.rows == null) {

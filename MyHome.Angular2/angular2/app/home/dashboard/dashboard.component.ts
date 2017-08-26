@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit, OnChanges  {
     @Input() elements: Array<IDashboardElementModel>
     colsizes: Array<number>;
     activeTab: string;
+    availableElements: Array<IDashboardElementModel>
 
     constructor() {
         this.colsizes = Array(12).fill(12).map((x, i) => i);
@@ -26,6 +27,7 @@ export class DashboardComponent implements OnInit, OnChanges  {
 
     ngOnInit() {
         this.preset.rows = this.preset.rows || [];
+        this.availableElements = this.elements.filter(v => v.parent == null);
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -45,16 +47,24 @@ export class DashboardComponent implements OnInit, OnChanges  {
                 });
             });
         } else {
-            this.elements.find((val, idx, arr) => {
-                return val.items.find((val2, idx2, arr2) => {
+            this.elements.map(v => {
+                if (v.id == e.dataTransfer.getData('elementId')) {
+                    v.viewType = 'default';
+                    column.elements.push(v);
+                }
+            });
+             /*.find((val, idx, arr) => {
+                console.log(val.id, e.dataTransfer.getData('elementId'));
+                return val.id == e.dataTransfer.getData('elementId');
+                /*return val.items.find((val2, idx2, arr2) => {
                     if (val2.id == e.dataTransfer.getData('elementId')) {
                         val2.viewType = 'default';
                         column.elements.push(val2);
                         return true;
                     }
-                    return false;;
+                    return false;
                 }) != null;
-            });
+            });*/
         }
         e.preventDefault();
     }
@@ -70,6 +80,11 @@ export class DashboardComponent implements OnInit, OnChanges  {
         e.dataTransfer.setData('elementId', element.id);
     }
 
+    /*getElements() {
+        console.log(111);
+        return this.elements.filter(v => v.parent == null);
+    }*/
+
     addColumn(row: IDashboardRowModel, size: number) {
         if (row.columns == null) {
             row.columns = new Array<IDashboardColumnModel>();
@@ -83,16 +98,13 @@ export class DashboardComponent implements OnInit, OnChanges  {
 
     findElement(elementId) {
         let ret = this.elements.find((v, i, a) => {
-            return v.items.find((v2, i2, a2) => {
-                return v2.id == elementId;
-            }) != null;
+            return v.id == elementId;
         });
 
         return ret == null ? "" : ret.name;
     }
 
     changeType(element, type) {
-        console.log(element, type);
         var e1 = this.elements.find((v, i) => {
             return v.id == element.id;
         });
