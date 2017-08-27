@@ -28,7 +28,7 @@ import { RLDb } from 'app/services/RLDB'
 export class HomeComponent {
 
     presets = new Presets();
-    elements = Array<PresetElementModel>();
+    //elements = Array<PresetElementModel>();
 
     constructor(
         private settingService: SettingService,
@@ -42,9 +42,9 @@ export class HomeComponent {
     ) {
         overlay.defaultViewContainer = vcRef;
 
-        this.dataService.getElements().subscribe(v => {
+        /*this.dataService.elements.subscribe(v => {
             this.elements  = v;
-        });
+        });*/
     }
 
     load() {

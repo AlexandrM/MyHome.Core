@@ -15,22 +15,9 @@
 
     <div class="col-md-{{column.size}}" *ngFor="let column of row.columns">
         <div class="well panel" (drop)="onDrop($event, row, column)" (dragover)="ondragover($event)">
-            <div class="btn-group" dropdown *ngFor="let element of column.elements" [hidden]="!isEditMode" >
-                <button [ripple] dropdownToggle
-                    class="btn btn-primary btn-raised" 
-                    draggable="true"
-                    (dragstart)="onDragstart($event, element)"
-                    title="{{findElement(element.id)}} - {{element.name}}"
-                    >
-                    {{element.name}}
-                    <span class="caret"></span>
-                </button>
-                <ul dropdownMenu class="dropdown-menu">
-                    <li><a href="#" (click)="changeType(element, 'default')" [ngClass]="{'bold': element.viewType == 'default'}">Стандартный</a></li>
-                    <li><a href="#" (click)="changeType(element, 'thermometer')" [ngClass]="{'bold': element.viewType == 'thermometer'}">Термометр</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#" (click)="delete(column, element)" class="">Удалить</a></li>
-                </ul>
+            <div *ngFor="let element of column.elements" [hidden]="!isEditMode" >
+                <element-edit [elementId]="element.id">
+                </element-edit>
             </div>
 
             <div *ngFor="let element of column.elements" [hidden]="isEditMode" >
@@ -43,6 +30,5 @@
 
 <element-panel 
     [hidden]="!showElementPanels || !isEditMode"
-    [elements]="availableElements"
     >
 </element-panel>

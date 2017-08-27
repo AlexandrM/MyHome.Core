@@ -10,12 +10,26 @@ export class PresetModel {
     rows: PresetRowModel[];
 
     save(settingService: SettingService) {
-        console.log(this.rows);
+        let copy = this.rows.map(c => {return { 
+            columns: c.columns == null ? null : c.columns.map(e => {
+                return {
+                    order: e.order,
+                    size: e.size,
+                    elements: e.elements.map(i => {
+                        return {
+                            id: i.id,
+                            type: i.type,
+                        }
+                    })
+                }
+            })
+        }});
+
         return settingService.post({
             id: this.id,
             name: this.name,
             group: 'presets',
-            value: JSON.stringify(this.rows)
+            value: JSON.stringify(copy)
         });
     };
     delete(settingService: SettingService) {
@@ -88,6 +102,8 @@ export class PresetElementModel {
     items: Array<PresetElementModel>;
     value: ElementItemValueModel;
     enumValues: PresetElementEnumModel[];
+
+    viewType: string;
 }
 
 export class ElementItemValueModel {

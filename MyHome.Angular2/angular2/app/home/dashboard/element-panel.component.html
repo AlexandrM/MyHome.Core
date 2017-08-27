@@ -1,9 +1,9 @@
 <div class="elements-bar">
     <div class="panel panel-primary">
-        <div class="panel-heading">Доступные элементы {{this.activeTab}}</div>
+        <div class="panel-heading" title="{{this.activeTab}}">Доступные элементы</div>
         <div class="panel-body">
             <ul class="nav nav-tabs">
-                <li *ngFor="let element of elements" [class.active]="activeTab == element.id">
+                <li *ngFor="let element of elementTabs" [class.active]="activeTab == element.id">
                     <a href="#" data-toggle="tab1" (click)="activeTab = element.id">{{element.name}}</a>
                 </li>
             </ul>            
@@ -11,7 +11,7 @@
                 <div 
                     class="tab-pane fade in" 
                     [class.active]="activeTab == element.id"
-                    *ngFor="let element of elements"
+                    *ngFor="let element of elementTabs" 
                     >
 
                     <button class="btn btn-primary btn-raised" *ngFor="let item of element.items" [ripple] draggable="true"

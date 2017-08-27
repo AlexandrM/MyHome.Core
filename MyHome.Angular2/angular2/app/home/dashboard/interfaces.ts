@@ -1,5 +1,7 @@
+import { PresetElementModel } from 'app/models';
+
 export interface IDashboardModel {
-    rows: IDashboardRowModel[]
+    rows: IDashboardRowModel[];
 }
 
 export interface IDashboardRowModel {
@@ -10,13 +12,13 @@ export interface IDashboardRowModel {
 export interface IDashboardColumnModel {
     order: number;
     size: number;
-    elements: IDashboardElementModel[]
+    elements: PresetElementModel[];
 }
 
-export interface IDashboardElementModel {
+export interface IDashboardElementModel1 {
     id: string;
-    parent: IDashboardElementModel;
+    parent: IDashboardElementModel1;
     name: string;
     viewType: string;
-    items: Array<IDashboardElementModel>;
+    items: Array<IDashboardElementModel1>;
 }

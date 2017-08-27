@@ -2,7 +2,9 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { ASE } from 'ase-ts-tools';
 
 import { ElementPanelComponent } from './element-panel/element-panel.component';
-import { IDashboardModel, IDashboardRowModel, IDashboardColumnModel, IDashboardElementModel } from './interfaces';
+import { IDashboardModel, IDashboardRowModel, IDashboardColumnModel } from './interfaces';
+import { DataService } from 'app/services/data.service'
+import { Presets, PresetModel, PresetRowModel, PresetColumnModel, PresetElementModel } from 'app/models';
 
 declare var $: any;
 
@@ -16,13 +18,19 @@ export class DashboardComponent implements OnInit, OnChanges  {
     @Input() preset: IDashboardModel;
     @Input() isEditMode: boolean;
     @Input() showElementPanels: boolean;
-    @Input() elements: Array<IDashboardElementModel>
+    elements: Array<PresetElementModel>
     colsizes: Array<number>;
     activeTab: string;
-    availableElements: Array<IDashboardElementModel>
+    availableElements: Array<PresetElementModel>
 
-    constructor() {
+    constructor(private dataService: DataService) {
         this.colsizes = Array(12).fill(12).map((x, i) => i);
+        dataService.elements.subscribe(v => {
+            this.elements = Array.from(v.values()).map(v => v.value);
+            if (this.preset != null) {
+                this.preset.rows = this.preset.rows || [];
+            }
+        });
     }
 
     ngOnInit() {
@@ -80,11 +88,6 @@ export class DashboardComponent implements OnInit, OnChanges  {
         e.dataTransfer.setData('elementId', element.id);
     }
 
-    /*getElements() {
-        console.log(111);
-        return this.elements.filter(v => v.parent == null);
-    }*/
-
     addColumn(row: IDashboardRowModel, size: number) {
         if (row.columns == null) {
             row.columns = new Array<IDashboardColumnModel>();
@@ -92,7 +95,7 @@ export class DashboardComponent implements OnInit, OnChanges  {
         row.columns.push({
             size: size,
             order: row.columns.length,
-            elements: new Array<IDashboardElementModel>()
+            elements: new Array<PresetElementModel>()
         });
     }
 
@@ -101,6 +104,7 @@ export class DashboardComponent implements OnInit, OnChanges  {
             return v.id == elementId;
         });
 
+        console.log(elementId, ret, this.elements);
         return ret == null ? "" : ret.name;
     }
 
@@ -123,7 +127,7 @@ export class DashboardComponent implements OnInit, OnChanges  {
         });        
     }
 
-    delete(column: IDashboardColumnModel, element: IDashboardElementModel) {
+    delete(column: IDashboardColumnModel, element: PresetElementModel) {
         column.elements.find((v, i) => {
             if (v.id == element.id) {
                 column.elements.splice(i, 1);

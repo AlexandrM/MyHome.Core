@@ -31,9 +31,9 @@ export class IndicatorDetailsComponent {
         private manageHubService: ManageHubService,
         private ngZone: NgZone,
     ) {
-        this.dataService.getElements().subscribe(v => {
+        /*this.dataService.getElements().subscribe(v => {
             this.elements  = v;
-        });
+        });*/
     }
 
     load() {

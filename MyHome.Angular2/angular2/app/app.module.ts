@@ -21,7 +21,12 @@ import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { CustomRequestOptions } from './shared/customRequestOptions';
 
 import { AppComponent } from './app.component';
-import { HomeComponent, DashboardComponent, ElementPanelComponent } from './home';
+import { HomeComponent } from './home';
+
+import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { ElementPanelComponent } from './home/dashboard/element-panel.component';
+import { ElementEditComponent } from './home/dashboard/element-edit.component';
+
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ElementSelectPanelComponent } from './indicatorDetails/element-panel/element-select-panel.component';
 import { D3Graph } from './indicatorDetails/d3graph/d3graph.component';
@@ -68,6 +73,7 @@ const APP_PROVIDERS = [
     ScheduleComponent,
     ElementSelectPanelComponent,
     D3Graph,
+    ElementEditComponent,
 
     ElementDefaultComponent,
     ElementNameComponent,

@@ -38,26 +38,16 @@ export class ElementDefaultComponent {
         overlay.defaultViewContainer = vcRef;
     }
 
-    doRefresh(element) {
-        this.ngZone.run(() => {            
-            this.element = element || this.element;
-            if (this.elementId == 'MyHome.Core.Plugin.iSpyManager.Mode') {
-                console.log(element, this.element);
-            }
-            if (this.element.value != null) {
-                this.elementEnums = this.element.enumValues;
-                this.element.value.value = this.elementEnums.find(v => v.id == this.element.value.valueId);
-            }
-        });
-
-        this.scheduleService.get(this.elementId).subscribe(r => {
-            this.schedules = r.list;
-        });
-    }
-
     ngOnInit() {
-        this.dataService.getElement(this.elementId).subscribe(v => {
-            this.doRefresh(v);
+        this.dataService.elements.subscribe(l => {
+            let item = Array.from(l.values()).find(x => x.value.id == this.elementId);
+            if (item != null) {
+                item.subscribe(e => {
+                    this.ngZone.run(() => {            
+                        this.element = e;
+                    });
+                });
+            }
         });
     }
 
