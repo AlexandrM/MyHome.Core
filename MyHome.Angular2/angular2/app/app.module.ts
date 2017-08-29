@@ -16,7 +16,8 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 
 import { IndicatorDetailsComponent } from './indicatorDetails';
-import { DropdownModule } from 'ng2-bootstrap/dropdown';
+//import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { CustomRequestOptions } from './shared/customRequestOptions';
 
@@ -83,7 +84,7 @@ const APP_PROVIDERS = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: false, preloadingStrategy: PreloadAllModules }),
-    DropdownModule.forRoot(),
+    BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     BootstrapModalModule,
     PopoverModule.forRoot()  

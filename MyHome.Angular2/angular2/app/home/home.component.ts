@@ -1,6 +1,7 @@
 import { Component, ViewContainerRef, NgZone } from '@angular/core';
 import { Response } from '@angular/http';
-import { DropdownModule } from 'ng2-bootstrap/dropdown';
+//import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Overlay } from 'angular2-modal';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
 

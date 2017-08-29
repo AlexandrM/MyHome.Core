@@ -1,4 +1,4 @@
-import { Injectable, Output } from '@angular/core';
+import { Injectable, Output, NgZone } from '@angular/core';
 import 'signalr/jquery.signalR.min';
 import { EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
@@ -13,7 +13,9 @@ import { ElementItemEnumService } from './elementItemEnum.service';
 @Injectable()
 export class DataService {
 
-	public elements = new BehaviorSubject<Map<string, BehaviorSubject<PresetElementModel>>>(new Map<string, BehaviorSubject<PresetElementModel>>());
+	//public elements = new BehaviorSubject<Map<string, BehaviorSubject<PresetElementModel>>>(new Map<string, BehaviorSubject<PresetElementModel>>());
+	public elementItems = new Map<string, BehaviorSubject<PresetElementModel>>();
+	public elements = new BehaviorSubject<Map<string, BehaviorSubject<PresetElementModel>>>(this.elementItems);
 
 	public elementEnums = new BehaviorSubject<Array<PresetElementEnumModel>>(new Array<PresetElementEnumModel>());
 	public elementValues = new BehaviorSubject<Array<ElementItemValueModel>>(new Array<ElementItemValueModel>());
@@ -23,6 +25,7 @@ export class DataService {
 		private manageHubService: ManageHubService,
 		private elementService: ElementService,
 		private elementItemEnumService: ElementItemEnumService,
+		private ngZone: NgZone
 		
 	) {
         this.manageHubService.onGetLastElementItemValues.subscribe((values) => {
@@ -50,7 +53,9 @@ export class DataService {
 
 	reloadElements() {
 		this.elementService.query().subscribe((res: Array<PresetElementModel>) => {
-			let map = new Map<string, BehaviorSubject<PresetElementModel>>();
+			//let map = new Map<string, BehaviorSubject<PresetElementModel>>();
+			let map = this.elements.value;
+			map.clear();
 			res.map(parent => {
 				map.set(parent.id, new BehaviorSubject<PresetElementModel>(parent));
 				parent.items.map(item => {
@@ -58,7 +63,9 @@ export class DataService {
 					map.set(item.id, new BehaviorSubject<PresetElementModel>(item));
 				});
 			});
-			this.elements.next(map);
+			//this.ngZone.run(() => {
+				this.elements.next(map);
+			//});
 		});
 	}
 

@@ -14,7 +14,7 @@
           {{element.value?.value?.name}}
           <span class="caret"></span>
       </button>
-      <ul dropdownMenu class="dropdown-menu">
+      <ul *dropdownMenu class="dropdown-menu">
         <li *ngFor="let item of this.elementEnums">
           <a href="#" (click)="changeValue(item)" class="">{{item.name}}</a>
         </li>
@@ -28,7 +28,7 @@
           {{element.mode == null ? 'Выключен' : element.mode.name}}
           <span class="caret"></span>
       </button>
-      <ul dropdownMenu class="dropdown-menu">
+      <ul *dropdownMenu class="dropdown-menu">
         <li *ngFor="let schedule of schedules">
           <a href="#" (click)="modeSet(schedule)" class="">{{schedule.name}}</a>
         </li>

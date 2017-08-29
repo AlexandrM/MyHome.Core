@@ -10,7 +10,7 @@
                 Представление: {{presets.current?.name}}
                 <span class="caret"></span>
             </button>
-            <ul dropdownMenu class="dropdown-menu">
+            <ul *dropdownMenu class="dropdown-menu">
                 <li *ngFor="let preset of presets.list">
                     <a href="#" (click)="setPreset(preset)">{{preset.name}}</a>
                 </li>
@@ -28,7 +28,7 @@
                 Сохранить
                 <span class="caret"></span>
             </button>
-            <ul dropdownMenu class="dropdown-menu">
+            <ul *dropdownMenu class="dropdown-menu">
                 <li><a href="#" (click)="editMode(1)">Сохранить</a></li>
                 <li><a href="#" (click)="editMode(2)">Сохранить как</a></li>
             </ul>

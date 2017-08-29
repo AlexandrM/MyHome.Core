@@ -43,9 +43,9 @@ export class ElementDefaultComponent {
             let item = Array.from(l.values()).find(x => x.value.id == this.elementId);
             if (item != null) {
                 item.subscribe(e => {
-                    this.ngZone.run(() => {            
+                    //this.ngZone.run(() => {            
                         this.element = e;
-                    });
+                    //});
                 });
             }
         });

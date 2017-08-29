@@ -5,7 +5,7 @@
                 ...
                 <span class="caret"></span>
             </button>
-            <ul dropdownMenu class="dropdown-menu">
+            <ul *dropdownMenu class="dropdown-menu">
                 <li *ngFor="let size of colsizes">
                     <a href="#" (click)="addColumn(row, size + 1)">Добавить колонку, размер {{size + 1}}</a>
                 </li>

@@ -8,7 +8,7 @@
 		{{element.name}}
 		<span class="caret"></span>
 	</button>
-	<ul dropdownMenu class="dropdown-menu">
+	<ul *dropdownMenu class="dropdown-menu">
 		<li><a href="#" (click)="changeType(element, 'default')" [ngClass]="{'bold': element.viewType == 'default'}">Стандартный</a></li>
 		<li><a href="#" (click)="changeType(element, 'thermometer')" [ngClass]="{'bold': element.viewType == 'thermometer'}">Термометр</a></li>
 		<li role="separator" class="divider"></li>

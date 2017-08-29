@@ -71,7 +71,7 @@
                   {{dhValueText(dayIdx, hour)}}
                   <span class="caret"></span>
               </button>
-              <ul dropdownMenu class="dropdown-menu">
+              <ul *dropdownMenu class="dropdown-menu">
                   <li *ngFor="let value of this.element.enumValues">
                       <a href="#" (click)="changeValue(dayIdx, hour, value.id); false;">{{value.name}}</a>
                   </li>

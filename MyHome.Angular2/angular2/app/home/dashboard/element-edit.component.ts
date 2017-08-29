@@ -13,7 +13,7 @@ export class ElementEditComponent implements OnInit {
     @Input() elementId: string;
     element = new PresetElementModel();
 
-    constructor(private dataService: DataService) {
+    constructor(private dataService: DataService, private ngZone: NgZone) {
     }
 
     ngOnInit() {
@@ -22,7 +22,6 @@ export class ElementEditComponent implements OnInit {
             if (item != null) {
                 item.subscribe(e => {
                     this.element = e;
-                    this.element.viewType = this.element.viewType || 'default';
                 });
             }
         });
