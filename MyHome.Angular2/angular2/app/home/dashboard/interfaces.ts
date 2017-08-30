@@ -1,8 +1,8 @@
 import { PresetElementModel } from 'app/models';
 
-export interface IDashboardModel {
+/*export interface IDashboardModel {
     rows: IDashboardRowModel[];
-}
+}*/
 
 export interface IDashboardRowModel {
     order: number;

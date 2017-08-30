@@ -227,13 +227,13 @@ module.exports = function (options) {
        */
       new ContextReplacementPlugin(
         // The (\\|\/) piece accounts for path separators in *nix and Windows
-        /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
+        ///angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
+        /angular(\\|\/)core(\\|\/)@angular/,
         helpers.root('angular2'), // location of your src
         {
           // your Angular Async Route paths relative to this root directory
         }
       ),
-
       /*
        * Plugin: CopyWebpackPlugin
        * Description: Copy files and directories in webpack.

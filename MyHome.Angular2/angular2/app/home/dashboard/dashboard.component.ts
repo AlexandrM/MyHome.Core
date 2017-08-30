@@ -2,9 +2,9 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { ASE } from 'ase-ts-tools';
 
 import { ElementPanelComponent } from './element-panel/element-panel.component';
-import { IDashboardModel, IDashboardRowModel, IDashboardColumnModel } from './interfaces';
+import { IDashboardRowModel, IDashboardColumnModel } from './interfaces';
 import { DataService } from 'app/services/data.service'
-import { Presets, PresetModel, PresetRowModel, PresetColumnModel, PresetElementModel } from 'app/models';
+import { PresetElementModel, PresetModel } from 'app/models';
 
 declare var $: any;
 
@@ -15,7 +15,8 @@ declare var $: any;
 })
 export class DashboardComponent implements OnInit, OnChanges  {
 
-    @Input() preset: IDashboardModel;
+    preset = new PresetModel();
+    presetCopy: String;
     @Input() isEditMode: boolean;
     @Input() showElementPanels: boolean;
     elements: Array<PresetElementModel>
@@ -25,17 +26,16 @@ export class DashboardComponent implements OnInit, OnChanges  {
 
     constructor(private dataService: DataService) {
         this.colsizes = Array(12).fill(12).map((x, i) => i);
+        
         dataService.elements.subscribe(v => {
             this.elements = Array.from(v.values()).map(v => v.value);
-            if (this.preset != null) {
-                this.preset.rows = this.preset.rows || [];
-            }
+            this.availableElements = this.elements.filter(v => v.parent == null);
         });
+        
+        this.dataService.presets.subscribe(x => this.preset = x.current || this.preset);
     }
 
     ngOnInit() {
-        this.preset.rows = this.preset.rows || [];
-        this.availableElements = this.elements.filter(v => v.parent == null);
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -61,18 +61,6 @@ export class DashboardComponent implements OnInit, OnChanges  {
                     column.elements.push(v);
                 }
             });
-             /*.find((val, idx, arr) => {
-                console.log(val.id, e.dataTransfer.getData('elementId'));
-                return val.id == e.dataTransfer.getData('elementId');
-                /*return val.items.find((val2, idx2, arr2) => {
-                    if (val2.id == e.dataTransfer.getData('elementId')) {
-                        val2.viewType = 'default';
-                        column.elements.push(val2);
-                        return true;
-                    }
-                    return false;
-                }) != null;
-            });*/
         }
         e.preventDefault();
     }
@@ -80,7 +68,7 @@ export class DashboardComponent implements OnInit, OnChanges  {
     ondragover(e) {
         if (e.toElement.classList.contains('panel')) {
             e.preventDefault();
-        }
+        } 
     }
 
     onDragstart(e, element) {

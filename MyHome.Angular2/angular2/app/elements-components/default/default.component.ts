@@ -1,11 +1,10 @@
 import { Component, ViewContainerRef, OnInit, Input, Output, NgZone } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import { Overlay } from 'angular2-modal';
-import { Modal } from 'angular2-modal/plugins/bootstrap';
+
+import { Overlay } from 'ngx-modialog';
+import { Modal } from 'ngx-modialog/plugins/bootstrap';
 
 import { PresetElementModel, ElementItemValueModel, PresetElementEnumModel, ScheduleModel } from './../../models';
 
-import { ManageHubService } from 'app/services/manageHub.service'
 import { DataService } from 'app/services/data.service'
 import { ScheduleService } from 'app/services/schedule.service'
 import { ElementItemModeService } from 'app/services/elementItemMode.service'
@@ -30,12 +29,9 @@ export class ElementDefaultComponent {
         private dataService: DataService,
         private scheduleService: ScheduleService,
         private elementItemModeService: ElementItemModeService,
-		private ngZone: NgZone,
-        private overlay: Overlay,
-        private vcRef: ViewContainerRef,
-        private modal: Modal,
+        private modal: Modal
     ) {
-        overlay.defaultViewContainer = vcRef;
+        //overlay.defaultViewContainer = vcRef;
     }
 
     ngOnInit() {

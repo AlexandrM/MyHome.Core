@@ -6,17 +6,17 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { RippleDirective } from 'ng2-ripple-directive';
-import { ModalModule } from 'angular2-modal';
-import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import { PopoverModule } from 'ng2-bootstrap/popover';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { DatePickerDirective } from 'bootstrap-material-datetimepicker';
+
+import { ModalModule } from 'ngx-modialog';
+import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 
 import { IndicatorDetailsComponent } from './indicatorDetails';
-//import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { CustomRequestOptions } from './shared/customRequestOptions';
@@ -44,6 +44,7 @@ import { ElementItemEnumService } from './services/elementItemEnum.service';
 import { ScheduleService } from './services/schedule.service';
 import { ElementItemModeService } from 'app/services/elementItemMode.service'
 import { ElementItemService } from './services/elementItem.service';
+import { SettingService } from './services/setting.service';
 
 import * as moment from 'moment/moment';
 
@@ -53,6 +54,7 @@ const APP_PROVIDERS = [
     ManageHubService,
     ElementService,
     DataService,
+    SettingService,
     ElementItemEnumService,
     ScheduleService,
     ElementItemModeService,

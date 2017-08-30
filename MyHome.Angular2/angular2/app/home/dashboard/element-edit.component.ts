@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, NgZone, SimpleChanges } from '@angular/core';
 
-import { PresetElementModel } from 'app/models';
+import { PresetElementModel, PresetRowModel, PresetColumnModel } from 'app/models';
 import { DataService } from 'app/services/data.service'
 
 @Component({
@@ -11,6 +11,8 @@ import { DataService } from 'app/services/data.service'
 export class ElementEditComponent implements OnInit {
 
     @Input() elementId: string;
+    @Input() row: PresetRowModel;
+    @Input() column: PresetColumnModel;
     element = new PresetElementModel();
 
     constructor(private dataService: DataService, private ngZone: NgZone) {
@@ -28,5 +30,22 @@ export class ElementEditComponent implements OnInit {
     }
 
     ngOnChanges(changes: SimpleChanges) {
+    }
+
+    changeType(element, type)
+    {
+        this.column.elements.map((v, i) => {
+            if (v.id == element.id) {
+                v.viewType = type;
+            };
+        });        
+    }
+
+    delete(element) {
+        this.column.elements.map((v, i) => {
+            if (v.id == element.id) {
+                this.column.elements.splice(i, 1);
+            };
+        });
     }
 }

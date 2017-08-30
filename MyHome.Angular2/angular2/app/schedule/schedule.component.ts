@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Overlay } from 'angular2-modal';
-import { Modal } from 'angular2-modal/plugins/bootstrap';
+
+import { Overlay } from 'ngx-modialog';
+import { Modal } from 'ngx-modialog/plugins/bootstrap';
 
 import { PresetElementModel, ScheduleModel, PresetElementEnumModel } from './../models';
 
@@ -21,11 +22,11 @@ export class ScheduleComponent implements OnInit {
         private router: Router,
         private scheduleService: ScheduleService,
         public A: ASE,
-        overlay: Overlay,
+        //overlay: Overlay,
         vcRef: ViewContainerRef,
         private modal: Modal
     ) {
-        overlay.defaultViewContainer = vcRef;
+        //overlay.defaultViewContainer = vcRef;
     }
     
     schedules: ScheduleModel[];

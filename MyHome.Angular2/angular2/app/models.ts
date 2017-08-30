@@ -7,9 +7,9 @@ export class PresetModel {
 
     id: string;
     name: string;
-    rows: PresetRowModel[];
+    rows = new Array<PresetRowModel>();
 
-    save(settingService: SettingService) {
+    /*save(settingService: SettingService) {
         let copy = this.rows.map(c => {return { 
             columns: c.columns == null ? null : c.columns.map(e => {
                 return {
@@ -19,12 +19,15 @@ export class PresetModel {
                         return {
                             id: i.id,
                             type: i.type,
+                            viewType: i.viewType,
                         }
                     })
                 }
             })
         }});
-
+        console.log(this.rows);
+        console.log(copy);
+        
         return settingService.post({
             id: this.id,
             name: this.name,
@@ -34,7 +37,7 @@ export class PresetModel {
     };
     delete(settingService: SettingService) {
         return settingService.delete(this.id);
-    };    
+    };*/
 }
 
 export class PresetRowModel {
@@ -45,16 +48,16 @@ export class PresetRowModel {
 export class PresetColumnModel {
     order: number;
     size: number;
-    elements: PresetElementModel[]
+    elements: Array<PresetElementModel>;
 }
 
 export class Presets {
-    list:  PresetModel[] = new Array<PresetModel>();
+    list = new Array<PresetModel>();
     current: PresetModel;
     name: string;
 
     public load(settingService: SettingService): void {
-        settingService.query('presets').subscribe((data: Response) => {
+        /*settingService.query('presets').subscribe((data: Response) => {
             this.list = new Array<PresetModel>();
             for(let idx in data) {
                 let item = data[idx];
@@ -74,7 +77,7 @@ export class Presets {
                     }
                } 
             });
-        });
+        });*/
     }
 
     public setCurrent(settingService: SettingService) {

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { Presets, PresetModel, PresetRowModel, PresetColumnModel, SettingModel } from 'app/models';
+import { SettingModel } from 'app/models';
 
 @Injectable()
 export class SettingService {

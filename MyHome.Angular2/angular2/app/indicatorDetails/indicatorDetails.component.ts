@@ -2,7 +2,7 @@ import { Component, Input, NgZone } from '@angular/core'
 import { D3Service } from 'd3-ng2-service'
 import { ElementSelectPanelComponent } from './element-panel/element-select-panel.component';
 
-import { Presets, PresetModel, PresetRowModel, PresetColumnModel, PresetElementModel } from 'app/models';
+import { PresetElementModel } from 'app/models';
 import { DataService } from 'app/services/data.service'
 import { ManageHubService } from 'app/services/manageHub.service'
 import { D3Graph } from './d3graph/d3graph.component'

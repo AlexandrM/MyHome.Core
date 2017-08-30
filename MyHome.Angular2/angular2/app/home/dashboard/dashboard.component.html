@@ -15,10 +15,8 @@
 
     <div class="col-md-{{column.size}}" *ngFor="let column of row.columns">
         <div class="well panel" (drop)="onDrop($event, row, column)" (dragover)="ondragover($event)">
-            <div *ngFor="let element of column.elements" [hidden]="!isEditMode" >
-                <element-edit [elementId]="element.id">
-                </element-edit>
-            </div>
+            <element-edit *ngFor="let element of column.elements" [elementId]="element.id" [row]="row" [column]="column" [hidden]="!isEditMode">
+            </element-edit>
 
             <div *ngFor="let element of column.elements" [hidden]="isEditMode" >
                 <element-default *ngIf="element.viewType == 'default' || element.viewType == undefined" [elementId]="element.id"></element-default>

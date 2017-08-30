@@ -1,9 +1,9 @@
-import { Component, ViewContainerRef, NgZone } from '@angular/core';
+import { Component, ViewContainerRef, OnChanges } from '@angular/core';
 import { Response } from '@angular/http';
-//import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { Overlay } from 'angular2-modal';
-import { Modal } from 'angular2-modal/plugins/bootstrap';
+
+import { Overlay } from 'ngx-modialog';
+import { Modal } from 'ngx-modialog/plugins/bootstrap';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -29,36 +29,17 @@ import { RLDb } from 'app/services/RLDB'
 export class HomeComponent {
 
     presets = new Presets();
-    //elements = Array<PresetElementModel>();
 
     constructor(
         private settingService: SettingService,
         private elementService: ElementService,
         private manageHubService: ManageHubService,
         private dataService: DataService,
-        private ngZone: NgZone,
-        overlay: Overlay,
-        vcRef: ViewContainerRef,
         private modal: Modal
     ) {
-        overlay.defaultViewContainer = vcRef;
-
-        /*this.dataService.elements.subscribe(v => {
-            this.elements  = v;
-        });*/
+        this.dataService.presets.subscribe(x => this.presets = x);
     }
-
-    load() {
-        //this.ngZone.run(() => {            
-            this.presets.load(this.settingService);
-            this.presets.current = new PresetModel();
-        //});
-    }
-
-    ngOnInit() {
-        this.load();
-    }
-
+   
     vm = {
         editMode: false,
     }
@@ -81,13 +62,12 @@ export class HomeComponent {
         }
         if (mode == null) {
             this.vm.editMode = false;
-            this.presets.load(this.settingService);
+            this.dataService.presetload();
             return;
         }
         if (mode == 1) {
-            this.presets.current.save(this.settingService).subscribe(res => {
-                this.vm.editMode = false;
-            });
+            this.vm.editMode = false;
+            this.dataService.presetSave(this.presets.current, true);
         } else if (mode == 2) {
             this.modal.prompt()
                 .size('sm')
@@ -107,17 +87,17 @@ export class HomeComponent {
                         this.vm.editMode = false;
                         this.presets.current.id = '';
                         this.presets.current.name = data;
-                        this.presets.current.save(this.settingService).subscribe(res => {
+                        /*this.presets.current.save(this.settingService).subscribe(res => {
                             this.presets.current.id = res.id;
                             this.presets.setCurrent(this.settingService).subscribe(res2 => {
                                 this.presets.load(this.settingService);
                             });
-                        });
+                        });*/
                     }).catch((data) => {
                     });
                 });
         } else if (mode == 3) {
-            this.presets.current.delete(this.settingService);
+            //this.presets.current.delete(this.settingService);
             this.vm.editMode = false;
         }
     }
@@ -140,10 +120,10 @@ export class HomeComponent {
             .open()
             .then((dr) => {
                 dr.result.then((data) => {
-                    this.presets.current.delete(this.settingService).subscribe(res => {
+                    /*this.presets.current.delete(this.settingService).subscribe(res => {
                         this.presets.load(this.settingService);
                         this.presets.current = new PresetModel();
-                    });
+                    });*/
                 }).catch((data) => {
                 });
             });

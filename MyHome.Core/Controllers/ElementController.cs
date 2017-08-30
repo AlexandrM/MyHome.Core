@@ -32,6 +32,25 @@ namespace MyHome.Core.Controllers
                 .Include(x => x.Items).ThenInclude(item => item.Mode)
                 .ToList();
 
+            var q = _db.ElementItemValues
+                .GroupBy(x => x.ElementItemId)
+                .Select(x => x.OrderByDescending(z => z.Updated).First());
+                
+            var values = _db.ElementItemValues
+                .GroupBy(x => x.ElementItemId)
+                .Select(x => x.OrderByDescending(z => z.Updated).First()).ToList();
+
+            model.ForEach(x =>
+            {
+                x.Items.ForEach(z => {
+                    var item = values.FirstOrDefault(y => y.ElementItemId == z.Id);
+                    if (item != null)
+                    {
+                        z.Values= new List<ElementItemValueModel>(new [] { item });
+                    }
+                });
+            });
+
             return model;
         }
     }

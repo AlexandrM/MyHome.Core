@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { Presets, PresetModel, PresetRowModel, PresetColumnModel, SettingModel, PresetElementModel } from 'app/models';
+import { PresetElementModel } from 'app/models';
 
 @Injectable()
 export class ElementItemModeService {

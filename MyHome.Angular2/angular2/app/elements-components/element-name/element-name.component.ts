@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Modal } from 'angular2-modal/plugins/bootstrap';
+
+import { Overlay } from 'ngx-modialog';
+import { Modal } from 'ngx-modialog/plugins/bootstrap';
 
 import { PresetElementModel } from './../../models';
 import { ElementItemService } from './../../services/elementItem.service';
