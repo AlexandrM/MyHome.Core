@@ -31,19 +31,21 @@ export class ElementDefaultComponent {
         private elementItemModeService: ElementItemModeService,
         private modal: Modal
     ) {
-        //overlay.defaultViewContainer = vcRef;
     }
 
     ngOnInit() {
         this.dataService.elements.subscribe(l => {
             let item = Array.from(l.values()).find(x => x.value.id == this.elementId);
             if (item != null) {
-                item.subscribe(e => {
-                    //this.ngZone.run(() => {            
-                        this.element = e;
-                    //});
+                item.subscribe(e => { 
+                    this.element = e;
+                    this.element.value.value = this.elementEnums.find(x => x.id == e.value.valueId);
                 });
             }
+        });
+        this.dataService.elementEnums.subscribe(x => { 
+            this.elementEnums = x.filter(e => e.elementItemId == this.elementId);
+            this.element.value.value = this.elementEnums.find(x => x.id == this.element.value.valueId);
         });
     }
 

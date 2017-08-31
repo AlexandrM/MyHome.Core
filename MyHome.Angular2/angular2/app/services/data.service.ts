@@ -36,13 +36,11 @@ export class DataService {
 			});
         });
 
-        this.manageHubService.onAfterChangeElementItemValue.subscribe((value) => {
-			this.updateValue(value);
-        });
+        this.manageHubService.onAfterChangeElementItemValue.subscribe((value) => this.updateValue(value));
 
-		this.manageHubService.onConnected.subscribe(() => {
-			this.reloadElements();
-		});
+		this.manageHubService.onConnected.subscribe(() => this.reloadElements() );
+
+		this.elementItemEnumService.query().subscribe(x => this.elementEnums.next(x));
 		
 		this.reloadElements();
 		this.presetload();
@@ -127,4 +125,13 @@ export class DataService {
 			}
 		});		
 	}
+
+	presetSetCurrent(id: string) {
+        return this.settingService.post({
+            id: 'CurrentPreset',
+            group: 'General',
+            name: 'CurrentPreset',
+            value: id
+        }).subscribe(x => this.presetload());
+    }
 }

@@ -9,6 +9,7 @@
       {{element.value?.dateTime | date: 'HH:mm:ss dd/MM/yyyy'}}
     </span>  
   </div>
+
   <div class="btn-group" dropdown [hidden]="!element.isEnum">
       <button [ripple] dropdownToggle class="btn btn-primary btn-raised">
           {{element.value?.value?.name}}
@@ -20,6 +21,7 @@
         </li>
       </ul>
   </div>
+
   <div [hidden]="element.type != 2 || element.isEnum" class="btn-group">
     <button [ripple] class="btn btn-primary btn-raised" (click)=changeRawValue()>Изменить</button>
   </div>

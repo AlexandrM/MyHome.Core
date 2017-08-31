@@ -40,10 +40,13 @@ namespace MyHome.Core.SignalR
         /// <param name="value"></param>
         public void tryChangeElementItemValue(ElementItemValueModel value)
         {
+            //System.Diagnostics.Debug.WriteLine($"+tryChangeElementItemValue: {value.ElementItemId}");
             foreach(var plugin in _plugins)
             {
+                //System.Diagnostics.Debug.WriteLine($"++tryChangeElementItemValue:{value.ElementItemId}:{plugin.GetType().FullName}");
                 plugin.ChangeValue(value, null);
             }
+            //System.Diagnostics.Debug.WriteLine($"-tryChangeElementItemValue: {value.ElementItemId}");
         }
 
         public void afterChangeElementItemValue(ElementItemValueModel value)
@@ -59,6 +62,7 @@ namespace MyHome.Core.SignalR
                 }
             }
 
+            //System.Diagnostics.Debug.WriteLine($"+onAfterChangeElementItemValue HUB: {value.ElementItemId}");
             Clients.All.onAfterChangeElementItemValue(value);
         }
         

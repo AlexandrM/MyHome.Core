@@ -2,9 +2,8 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { ASE } from 'ase-ts-tools';
 
 import { ElementPanelComponent } from './element-panel/element-panel.component';
-import { IDashboardRowModel, IDashboardColumnModel } from './interfaces';
 import { DataService } from 'app/services/data.service'
-import { PresetElementModel, PresetModel } from 'app/models';
+import { PresetElementModel, PresetModel, PresetRowModel, PresetColumnModel } from 'app/models';
 
 declare var $: any;
 
@@ -41,7 +40,7 @@ export class DashboardComponent implements OnInit, OnChanges  {
     ngOnChanges(changes: SimpleChanges) {
     }
 
-    onDrop(e, row: IDashboardRowModel, column: IDashboardColumnModel) {
+    onDrop(e, row: PresetRowModel, column: PresetColumnModel) {
         if (e.dataTransfer.getData('moving') == 'true') {
             ASE.a.recursive(this.preset.rows, (row) => {
                 return ASE.a.recursive(row.columns, (rcolumn) => {
@@ -76,9 +75,9 @@ export class DashboardComponent implements OnInit, OnChanges  {
         e.dataTransfer.setData('elementId', element.id);
     }
 
-    addColumn(row: IDashboardRowModel, size: number) {
+    addColumn(row: PresetRowModel, size: number) {
         if (row.columns == null) {
-            row.columns = new Array<IDashboardColumnModel>();
+            row.columns = new Array<PresetColumnModel>();
         }
         row.columns.push({
             size: size,
@@ -115,7 +114,7 @@ export class DashboardComponent implements OnInit, OnChanges  {
         });        
     }
 
-    delete(column: IDashboardColumnModel, element: PresetElementModel) {
+    delete(column: PresetColumnModel, element: PresetElementModel) {
         column.elements.find((v, i) => {
             if (v.id == element.id) {
                 column.elements.splice(i, 1);

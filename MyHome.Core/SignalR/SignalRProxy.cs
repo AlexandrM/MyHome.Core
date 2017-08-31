@@ -132,6 +132,7 @@ namespace MyHome.Core.SignalR
         /// <param name="value"></param>
         public void AfterChangeElementItemValue(ElementItemValueModel value)
         {
+            //System.Diagnostics.Debug.WriteLine($"+onAfterChangeElementItemValue PROXY: {value.ElementItemId}");
             var hub = _connectionManager.GetHubContext<ManageHub>();
             hub.Clients.All.onAfterChangeElementItemValue(value);
         }

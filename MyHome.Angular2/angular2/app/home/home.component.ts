@@ -87,12 +87,7 @@ export class HomeComponent {
                         this.vm.editMode = false;
                         this.presets.current.id = '';
                         this.presets.current.name = data;
-                        /*this.presets.current.save(this.settingService).subscribe(res => {
-                            this.presets.current.id = res.id;
-                            this.presets.setCurrent(this.settingService).subscribe(res2 => {
-                                this.presets.load(this.settingService);
-                            });
-                        });*/
+                        this.dataService.presetSave(this.presets.current, true);
                     }).catch((data) => {
                     });
                 });
@@ -104,7 +99,8 @@ export class HomeComponent {
 
     setPreset(preset: PresetModel) {
         this.presets.current = preset;
-        this.presets.setCurrent(this.settingService);
+        this.dataService.presetSetCurrent(this.presets.current.id);
+        //this.presets.setCurrent(this.settingService);
     }
 
     deletePreset(preset: PresetModel) {
