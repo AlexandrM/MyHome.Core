@@ -436,7 +436,7 @@ namespace MyHome.Core.Plugin.DeviceAK1
 
                     if (value.ElementItemId == gElement0ManageAuto)
                     {
-                        if ((value.ValueId == gElement0ManageAutoOn) & (oldValue == null || value.ValueId == gElement0ManageAutoOff))
+                        if ((value.ValueId == gElement0ManageAutoOn) & (oldValue == null || oldValue.ValueId == gElement0ManageAutoOff))
                         {
                             var resp = await wc.GetAsync(String.Format("{0}/?automode=on", url));
                             if (resp.IsSuccessStatusCode)
@@ -444,7 +444,7 @@ namespace MyHome.Core.Plugin.DeviceAK1
                                 return await Process();
                             }
                         }
-                        if ((value.ValueId == gElement0ManageAutoOff) & (oldValue == null || value.ValueId == gElement0ManageAutoOn))
+                        if ((value.ValueId == gElement0ManageAutoOff) & (oldValue == null || oldValue.ValueId == gElement0ManageAutoOn))
                         {
                             var resp = await wc.GetAsync(String.Format("{0}/?automode=off", url));
                             if (resp.IsSuccessStatusCode)

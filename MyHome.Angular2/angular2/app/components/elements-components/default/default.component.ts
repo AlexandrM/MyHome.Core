@@ -18,9 +18,9 @@ import { ElementItemModeService } from 'app/services/elementItemMode.service'
 })
 export class ElementDefaultComponent {
 
-    element = new PresetElementModel();
-    elementEnums = new Array<PresetElementEnumModel>();
-    schedules: Array<ScheduleModel>;
+    private element = new PresetElementModel();
+    private elementEnums = new Array<PresetElementEnumModel>();
+    private schedules: Array<ScheduleModel>;
 
     @Input()
     elementId: string;
@@ -45,6 +45,9 @@ export class ElementDefaultComponent {
                     }
                 });
             }
+        });
+        this.scheduleService.get(this.elementId).subscribe(data => {
+            this.schedules = data.list;
         });
     }
 
@@ -99,7 +102,7 @@ export class ElementDefaultComponent {
         } else {
             this.element.modeId = schedule.id;
         }
-        this.elementItemModeService.post(this.element).subscribe(data => {
+        this.elementItemModeService.post({ id: this.element.id, modeId: schedule.id}).subscribe(data => {
             this.dataService.reloadElements();
         });
     }

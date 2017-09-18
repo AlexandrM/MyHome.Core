@@ -90,6 +90,7 @@
     "start": "concurrently \"npm run frontend -- --open\" \"npm run backend\" ",
     "ef-m-add": "dotnet ef migrations add",
     "build-frontend": "webpack --config config/webpack.prod.js  --progress --profile --bail",
+    "b-ff": "webpack --config config/webpack.prod.js  --progress --profile --bail",
     "build-backend": "dotnet build -c Release",
     "publish": "dotnet publish -c Release",
     "release": "npm run build-frontend && npm run build-backend && npm run publish"

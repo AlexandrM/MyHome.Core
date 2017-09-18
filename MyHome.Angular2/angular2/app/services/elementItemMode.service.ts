@@ -13,7 +13,7 @@ export class ElementItemModeService {
     constructor(private http: Http) { 
     }
      
-    post(model: PresetElementModel) {
+    post(model: any) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');        
        

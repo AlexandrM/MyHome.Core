@@ -34,6 +34,7 @@ import { D3Graph } from './components/indicatorDetails/d3graph/d3graph.component
 
 import { ElementDefaultComponent } from './components/elements-components/default/default.component';
 import { ElementNameComponent } from './components/elements-components/element-name/element-name.component';
+import { DebugRootComponent } from './components/debug/debug-root/debug-root.component';
 
 import { ASE } from 'ase-ts-tools';
 
@@ -45,6 +46,7 @@ import { ScheduleService } from './services/schedule.service';
 import { ElementItemModeService } from './services/elementItemMode.service'
 import { ElementItemService } from './services/elementItem.service';
 import { SettingService } from './services/setting.service';
+import { DebugService } from './services/debug.service';
 
 import * as moment from 'moment/moment';
 
@@ -59,6 +61,7 @@ const APP_PROVIDERS = [
     ScheduleService,
     ElementItemModeService,
     ElementItemService,
+    DebugService,
 ];
 
 @NgModule({
@@ -77,6 +80,7 @@ const APP_PROVIDERS = [
     ElementSelectPanelComponent,
     D3Graph,
     ElementEditComponent,
+    DebugRootComponent,
 
     ElementDefaultComponent,
     ElementNameComponent,

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpConnection, HubConnection, ConsoleLogger, LogLevel } from '@aspnet/signalr-client/';
+import { HttpConnection, HubConnection, ConsoleLogger, LogLevel, NullLogger } from '@aspnet/signalr-client/';
 import { EventEmitter } from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
 
