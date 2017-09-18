@@ -37,3 +37,8 @@ MyHome.Core.Shared/out/
 MyHome.Core/out/
 MyHome.Core/MyHome.Core.csproj.user
 MyHome.Angular2/wwwroot/
+MyHome.Core/bower_components/
+MyHome.Core.Web/bin/
+MyHome.Core.Web/MyHome.Core.Web.csproj.user
+MyHome.Core.Web/DataBase.db3
+MyHome.Core.Web/obj/

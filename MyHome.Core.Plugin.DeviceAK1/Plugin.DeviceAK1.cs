@@ -27,6 +27,8 @@ namespace MyHome.Core.Plugin.DeviceAK1
     */
     public class Plugin : IPlugin
     {
+        #region IDS
+
         /// <summary>
         /// Element1 (Коробка)
         /// </summary>
@@ -96,6 +98,8 @@ namespace MyHome.Core.Plugin.DeviceAK1
         /// Element3 BatteryState (Батарейка 2 этаж)
         /// </summary>
         public static string gElement2IndicatorB = "DeviceAK1.2B";
+
+        #endregion IDS
 
         IConfigurationRoot _cfg;
         ISignalRProxy _proxy;

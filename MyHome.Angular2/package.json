@@ -30,8 +30,8 @@
     "ng2-ripple-directive": "^0.0.2",
     "ngx-bootstrap": "^1.9.1",
     "rxjs": "^5.4.3",
-    "signalr": "^2.2.2",
-    "zone.js": "^0.8.17"
+    "zone.js": "^0.8.17",
+    "@aspnet/signalr-client": "^1.0.0-alpha1-final"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^4.3.6",
@@ -85,8 +85,8 @@
   "scripts": {
     "backend": "dotnet watch run",
     "bb": "dotnet watch run",
-    "frontend": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base app/",
-    "ff": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base app/",
+    "frontend": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base angular2/app/",
+    "ff": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base angular2/app/",
     "start": "concurrently \"npm run frontend -- --open\" \"npm run backend\" ",
     "ef-m-add": "dotnet ef migrations add",
     "build-frontend": "webpack --config config/webpack.prod.js  --progress --profile --bail",

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import 'signalr/jquery.signalR.min';
+import { HttpConnection, HubConnection, ConsoleLogger, LogLevel } from '@aspnet/signalr-client/';
 import { EventEmitter } from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
 
-import { ElementItemValueModel } from './../models';
+import { ElementItemValueModel } from 'app/models/models';
 
 import { environment } from 'environments/environment';
 
@@ -11,9 +11,7 @@ declare var $:any;
 
 @Injectable()
 export class ManageHubService {
-	private hub: any;
-    private server: any;
-    private client: any;
+	private hub: HubConnection;
     private iRecconect: Subscription;
 
 	public connectionExists: Boolean;
@@ -24,10 +22,10 @@ export class ManageHubService {
     public onGetLastElementItemValues: EventEmitter<ElementItemValueModel[]> = new EventEmitter<ElementItemValueModel[]>();
 
  	constructor() {
-        let conn = $.hubConnection(`${SIGNALR_URL}`, { useDefaultPath: false });
+        let conn = new HttpConnection(`${SIGNALR_URL}` + '/manageHub');
 
         let self = this;
-        conn.stateChanged(state => {
+        /*conn.stateChanged(state => {
             switch (state.newState) {
                 case $.signalR.connectionState.connecting:
                     break;
@@ -51,9 +49,9 @@ export class ManageHubService {
                         });
                     break;
             }
-        });
-        this.hub = conn.createHubProxy('manageHub');
-
+        });*/
+        this.hub = new HubConnection(conn);
+                
         this.registerOnServerEvents();
 	    this.startConnection();
  	}
@@ -67,27 +65,23 @@ export class ManageHubService {
     }
 
 	private startConnection(): void {
-        let self = this;
-        this.hub.connection.start().done((data: any) => {
-        }).fail((error) => {
-            console.log('Could not connect ' + error);
-        });
+        this.hub.start().catch(err => console.log('SignalR.startConnection() error!'));
     }
 
     public getLastElementItemValueModel(id: string) {
-        this.hub.invoke('getLastElementItemValue', id).done(function (data){
+        this.hub.invoke('getLastElementItemValue', id).then(function (data){
         });
     }
 
     public getLastElementItemValuesModel(ids: string[]) {
         let self = this;
-        this.hub.invoke('getLastElementItemValues', ids).done(function (data){
+        this.hub.invoke('getLastElementItemValues', ids).then(function (data){
             self.onGetLastElementItemValues.emit(data);
         });
     }
 
     public tryChangeElementItemValue(value: ElementItemValueModel) {
-        this.hub.invoke('tryChangeElementItemValue', value).done(function (data){
+        this.hub.invoke('tryChangeElementItemValue', value).then(function (data){
         });
     }
 }

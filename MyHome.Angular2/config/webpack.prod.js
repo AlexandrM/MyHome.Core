@@ -23,7 +23,7 @@ const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin');
  */
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const API_URL = process.env.API_URL || '/api';
-const SIGNALR_URL = process.env.SIGNALR_URL || '/signalr';
+const SIGNALR_URL = process.env.SIGNALR_URL || '';
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   API_URL: API_URL,
   SIGNALR_URL: SIGNALR_URL,

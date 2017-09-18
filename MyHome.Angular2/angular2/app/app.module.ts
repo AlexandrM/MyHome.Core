@@ -16,24 +16,24 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 
-import { IndicatorDetailsComponent } from './indicatorDetails';
+import { IndicatorDetailsComponent } from './components/indicatorDetails';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { CustomRequestOptions } from './shared/customRequestOptions';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home';
+import { HomeComponent } from './components/home/home.component';
 
-import { DashboardComponent } from './home/dashboard/dashboard.component';
-import { ElementPanelComponent } from './home/dashboard/element-panel.component';
-import { ElementEditComponent } from './home/dashboard/element-edit.component';
+import { DashboardComponent } from './components/home/dashboard/dashboard.component';
+import { ElementPanelComponent } from './components/home/dashboard/element-panel.component';
+import { ElementEditComponent } from './components/home/dashboard/element-edit.component';
 
-import { ScheduleComponent } from './schedule/schedule.component';
-import { ElementSelectPanelComponent } from './indicatorDetails/element-panel/element-select-panel.component';
-import { D3Graph } from './indicatorDetails/d3graph/d3graph.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { ElementSelectPanelComponent } from './components/indicatorDetails/element-panel/element-select-panel.component';
+import { D3Graph } from './components/indicatorDetails/d3graph/d3graph.component';
 
-import { ElementDefaultComponent } from './elements-components/default/default.component';
-import { ElementNameComponent } from './elements-components/element-name/element-name.component';
+import { ElementDefaultComponent } from './components/elements-components/default/default.component';
+import { ElementNameComponent } from './components/elements-components/element-name/element-name.component';
 
 import { ASE } from 'ase-ts-tools';
 
@@ -42,7 +42,7 @@ import { DataService } from './services/data.service';
 import { ElementService } from './services/element.service';
 import { ElementItemEnumService } from './services/elementItemEnum.service';
 import { ScheduleService } from './services/schedule.service';
-import { ElementItemModeService } from 'app/services/elementItemMode.service'
+import { ElementItemModeService } from './services/elementItemMode.service'
 import { ElementItemService } from './services/elementItem.service';
 import { SettingService } from './services/setting.service';
 

@@ -20,7 +20,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const DEV_SERVER_HOST = process.env.HOST || 'localhost';
 const DEV_SERVER_PORT = process.env.PORT || 3000;
 const API_URL = process.env.API_URL || 'http://localhost:5000/api';
-const SIGNALR_URL = process.env.SIGNALR_URL || 'http://localhost:5000/signalr';
+const SIGNALR_URL = process.env.SIGNALR_URL || 'http://localhost:5000';
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   DEV_SERVER_HOST: DEV_SERVER_HOST,

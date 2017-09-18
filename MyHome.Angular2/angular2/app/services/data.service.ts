@@ -5,11 +5,11 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { Presets, PresetModel, PresetElementModel, ElementItemValueModel, PresetElementEnumModel } from './../models';
-import { ManageHubService } from './manageHub.service';
-import { ElementService } from './element.service';
-import { ElementItemEnumService } from './elementItemEnum.service';
-import { SettingService } from './setting.service';
+import { Presets, PresetModel, PresetElementModel, ElementItemValueModel, PresetElementEnumModel } from 'app/models/models';
+import { ManageHubService } from 'app/services/manageHub.service';
+import { ElementService } from 'app/services/element.service';
+//import { ElementItemEnumService } from 'app/services/elementItemEnum.service';
+import { SettingService } from 'app/services/setting.service';
 
 
 @Injectable()
@@ -17,7 +17,7 @@ export class DataService {
 
 	public elements = new BehaviorSubject<Map<string, BehaviorSubject<PresetElementModel>>>(new Map<string, BehaviorSubject<PresetElementModel>>());
 
-	public elementEnums = new BehaviorSubject<Array<PresetElementEnumModel>>(new Array<PresetElementEnumModel>());
+	//public elementEnums = new BehaviorSubject<Array<PresetElementEnumModel>>(new Array<PresetElementEnumModel>());
 	public elementValues = new BehaviorSubject<Array<ElementItemValueModel>>(new Array<ElementItemValueModel>());
 
 	public presets = new BehaviorSubject<Presets>(new Presets());
@@ -25,7 +25,7 @@ export class DataService {
 	constructor(
 		private manageHubService: ManageHubService,
 		private elementService: ElementService,
-		private elementItemEnumService: ElementItemEnumService,
+		//private elementItemEnumService: ElementItemEnumService,
 		private ngZone: NgZone,
 		private settingService: SettingService,
 		
@@ -40,7 +40,7 @@ export class DataService {
 
 		this.manageHubService.onConnected.subscribe(() => this.reloadElements() );
 
-		this.elementItemEnumService.query().subscribe(x => this.elementEnums.next(x));
+		//this.elementItemEnumService.query().subscribe(x => this.elementEnums.next(x));
 		
 		this.reloadElements();
 		this.presetload();

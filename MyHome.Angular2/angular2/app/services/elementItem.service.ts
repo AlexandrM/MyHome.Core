@@ -5,7 +5,7 @@ import { ASE } from 'ase-ts-tools';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { PresetElementModel } from 'app/models';
+import { PresetElementModel } from 'app/models/models';
 
 @Injectable()
 export class ElementItemService {
