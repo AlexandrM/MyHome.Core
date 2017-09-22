@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\**" />
+    <Content Remove="Views\**" />
+    <EmbeddedResource Remove="Views\**" />
+    <None Remove="Views\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -28,7 +35,7 @@
 
   <ItemGroup>
     <Reference Include="Hangfire.MemoryStorage">
-      <HintPath>..\..\Hangfire.MemoryStorage\src\Hangfire.MemoryStorage\bin\Release\netstandard1.3\Hangfire.MemoryStorage.dll</HintPath>
+      <HintPath>..\_Libs\Hangfire.MemoryStorage.dll</HintPath>
     </Reference>
   </ItemGroup>
 

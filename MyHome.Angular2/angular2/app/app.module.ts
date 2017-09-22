@@ -9,6 +9,7 @@ import { RippleDirective } from 'ng2-ripple-directive';
 import { PopoverModule } from 'ng2-bootstrap/popover';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { DatePickerDirective } from 'bootstrap-material-datetimepicker';
+import { HttpConnection, HubConnection, ConsoleLogger, LogLevel, NullLogger } from '@aspnet/signalr-client';
 
 import { ModalModule } from 'ngx-modialog';
 import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';

@@ -66,7 +66,7 @@ namespace MyHome.Core.Plugin
                         }
                     }
                 }
-                catch(Exception exc)
+                catch
                 {
 
                 }

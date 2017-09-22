@@ -34,6 +34,7 @@
     "@aspnet/signalr-client": "^1.0.0-alpha1-final"
   },
   "devDependencies": {
+    "@angular/cli": "^1.4.2",
     "@angular/compiler-cli": "^4.3.6",
     "@types/hammerjs": "^2.0.35",
     "@types/jasmine": "^2.5.54",
@@ -75,6 +76,7 @@
     "tslint": "^5.7.0",
     "tslint-loader": "^3.5.3",
     "typescript": "^2.4.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "v8-lazy-parse-webpack-plugin": "^0.3.0",
     "webpack": "^3.5.5",
     "webpack-dev-middleware": "^1.12.0",

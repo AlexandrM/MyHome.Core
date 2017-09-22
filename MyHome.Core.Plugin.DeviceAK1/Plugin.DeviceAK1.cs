@@ -118,7 +118,7 @@ namespace MyHome.Core.Plugin.DeviceAK1
         /// <summary>
         /// On plugin load fill database
         /// </summary>
-        public async Task<bool> Init()
+        public Task<bool> Init()
         {
             try
             {
@@ -268,7 +268,7 @@ namespace MyHome.Core.Plugin.DeviceAK1
                 Log.L("Exception MyHome.Service.DeviceAK1.Init(): " + exc.Message);
             }
 
-            return true;
+            return Task.FromResult<bool>(true);
         }
 
         public TimeSpan Interval { get; set; }

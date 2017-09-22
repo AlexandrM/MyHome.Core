@@ -42,3 +42,5 @@ MyHome.Core.Web/bin/
 MyHome.Core.Web/MyHome.Core.Web.csproj.user
 MyHome.Core.Web/DataBase.db3
 MyHome.Core.Web/obj/
+MyHome.Core.Web/Properties/PublishProfiles/FolderProfile.pubxml
+MyHome.Core.Web/Properties/PublishProfiles/FolderProfile.pubxml.user
